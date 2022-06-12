@@ -1,0 +1,22 @@
+.body-wrapper {
+    text-align: center;
+    border: solid 5px black;
+    background-color: aqua;
+    padding: 10px;
+    margin: 10px 10px 0 10px ;
+
+    display: grid;
+    grid-template-rows: 0fr;
+    grid-auto-columns: 4fr 6fr;
+    /*grid-gap: 10px;*/
+    grid-template-areas:
+    "l r";
+}
+
+.rightbar {
+    grid-area: r;
+}
+
+.leftbar {
+    grid-area: l;
+}
