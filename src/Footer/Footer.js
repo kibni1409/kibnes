@@ -1,8 +1,8 @@
-import './Footer.css';
+import classes from'./Footer.module.css';
 
 function Footer() {
     return (
-        <div className="footer-wrapper">
+        <div className={classes.footer_wrapper}>
             Footer
         </div>
     );

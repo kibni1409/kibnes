@@ -1,13 +1,13 @@
-import './Body.css';
+import classes from './Body.module.css';
 import LeftBar from "./LeftBar/LeftBar";
 import RightBar from "./RightBar/RightBar";
 
 function Body() {
     return (
-        <div className="body-wrapper">
+        <div className={classes.body_wrapper}>
 
-            <LeftBar className="leftbar" />
-            <RightBar className="rightbar"/>
+            <LeftBar className={classes.rightbar} />
+            <RightBar className={classes.leftbar}/>
         </div>
     );
 }

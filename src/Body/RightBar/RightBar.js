@@ -1,8 +1,8 @@
-import './RightBar.css';
+import classes from './RightBar.module.css';
 
 function RightBar() {
     return (
-        <div className="rightbar-wrapper">
+        <div className={classes.rightbar_wrapper}>
             RightBar
         </div>
     );

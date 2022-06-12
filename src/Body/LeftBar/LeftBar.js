@@ -1,8 +1,8 @@
-import './LeftBar.css';
+import classes from './LeftBar.module.css';
 
 function LeftBar() {
     return (
-        <div className="leftbar-wrapper">
+        <div className={classes.leftbar_wrapper}>
             LeftBar
         </div>
     );
