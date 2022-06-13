@@ -5,3 +5,19 @@
     padding: 10px;
     margin: 10px;
 }
+
+.item {
+    font-size: 14pt;
+    color: aliceblue;
+    border: solid 5px black;
+    background-color: #50bbce;
+    padding: 10px;
+    margin: 10px;
+}
+
+
+.item.active {
+    font-size: 14pt;
+    color: #7813a1;
+    background-color: #3ebe1b;
+}

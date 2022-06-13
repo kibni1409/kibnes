@@ -7,7 +7,7 @@
 
     display: grid;
     grid-template-rows: 0fr;
-    grid-auto-columns: 4fr 6fr;
+    grid-auto-columns: 2fr 8fr;
     /*grid-gap: 10px;*/
     grid-template-areas:
     "l r";

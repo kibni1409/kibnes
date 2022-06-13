@@ -2,9 +2,17 @@ import classes from './LeftBar.module.css';
 
 function LeftBar() {
     return (
-        <div className={classes.leftbar_wrapper}>
-            LeftBar
-        </div>
+        <nav className={classes.leftbar_wrapper}>
+            <div className={`${classes.item} ${classes.active}`}>
+                <a>Profile</a>
+            </div>
+            <div className={classes.item}>
+                <a>Messages</a>
+            </div>
+            <div className={classes.item}>
+                <a>Friends</a>
+            </div>
+        </nav>
     );
 }
 
