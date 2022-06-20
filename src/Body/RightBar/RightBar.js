@@ -1,11 +1,10 @@
 import classes from './RightBar.module.css';
 import Profile from "./Profile/Profile";
 
-function RightBar() {
+
+const RightBar = () => {
     return (
-        <div className={classes.rightbar_wrapper}>
-            <Profile />
-        </div>
+     <Profile />
     );
 }
 

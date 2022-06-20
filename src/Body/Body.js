@@ -2,12 +2,11 @@ import classes from './Body.module.css';
 import LeftBar from "./LeftBar/LeftBar";
 import RightBar from "./RightBar/RightBar";
 
-function Body() {
+const Body = () => {
     return (
         <div className={classes.body_wrapper}>
-
-            <LeftBar className={classes.rightbar} />
-            <RightBar className={classes.leftbar}/>
+            <LeftBar className={classes.leftbar} />
+            <RightBar className={classes.rightbar}/>
         </div>
     );
 }

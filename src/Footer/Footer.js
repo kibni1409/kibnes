@@ -1,6 +1,6 @@
 import classes from'./Footer.module.css';
 
-function Footer() {
+const Footer = () => {
     return (
         <div className={classes.footer_wrapper}>
             Footer

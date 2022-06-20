@@ -1,4 +1,9 @@
-.post{
+.post {
     border: solid 5px black;
-
+    float: left;
+    padding: 10px;
+    margin: 10px;
+    background-color: #bebe29;
+    border-radius: 20px;
+    min-width: 60px;
 }

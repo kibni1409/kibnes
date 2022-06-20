@@ -1,11 +1,11 @@
 import classes from './Posts.module.css';
 import Post from "./Post/Post";
 
-function Posts() {
+const Posts = () => {
     return (
-        <div>
+        <div className={classes.post}>
             <Post message="Hi" />
-            <Post message="Yooo"/>
+            <Post message="Yooorrrrrrrrrrrr"/>
         </div>
     );
 }

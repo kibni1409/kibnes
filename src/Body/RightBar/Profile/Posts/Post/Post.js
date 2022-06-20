@@ -1,6 +1,6 @@
 import classes from './Post.module.css';
 
-function Post(props) {
+const Post = (props) => {
     return (
         <div className={classes.post}>
             {props.message}

@@ -1,18 +1,19 @@
 import classes from './LeftBar.module.css';
+import {NavLink} from "react-router-dom";
 
-function LeftBar() {
+const LeftBar = () => {
     return (
-        <nav className={classes.leftbar_wrapper}>
-            <div className={`${classes.item} ${classes.active}`}>
-                <a>Profile</a>
+            <div className={classes.leftbar_wrapper}>
+                <div className={`${classes.item} ${classes.active}`}>
+                    <NavLink to="/profile">Profile</NavLink>
+                </div>
+                <div className={classes.item}>
+                    <NavLink to="/messages">Messages</NavLink>
+                </div>
+                <div className={classes.item}>
+                    <NavLink to="/friends">Friends</NavLink>
+                </div>
             </div>
-            <div className={classes.item}>
-                <a>Messages</a>
-            </div>
-            <div className={classes.item}>
-                <a>Friends</a>
-            </div>
-        </nav>
     );
 }
 

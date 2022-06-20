@@ -1,7 +1,7 @@
 import classes from './Profile.module.css';
 import Posts from "./Posts/Posts";
 
-function Profile() {
+const Profile = () => {
     return (
         <div className={classes.profile}>
             <img src="../../../img/ava.png" alt="ava"/>
