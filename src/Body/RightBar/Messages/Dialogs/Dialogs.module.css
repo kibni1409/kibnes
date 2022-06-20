@@ -1,0 +1,8 @@
+.dialogs{
+    background-color: #72be21;
+    border: solid black 5px;
+    padding: 10px;
+    margin: 10px;
+
+    grid-area: d;
+}

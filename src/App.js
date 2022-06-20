@@ -18,11 +18,7 @@ const App = () => {
 
             <div className={classes.app_wrapper}>
                 <Header/>
-                <LeftBar/>
-                {/*<Routes>*/}
-                {/*    <Route exact path="/profile" element={<Profile/>}/>*/}
-                {/*    <Route exact path="/messages" element={<Messages/>}/>*/}
-                {/*</Routes>*/}
+                <Body />
                 <Footer/>
             </div>
 
