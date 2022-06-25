@@ -4,6 +4,7 @@ import Post from "./Post/Post";
 const Posts = () => {
     return (
         <div className={classes.post}>
+            Posts
             <Post message="Hi" />
             <Post message="Yooorrrrrrrrrrrr"/>
         </div>

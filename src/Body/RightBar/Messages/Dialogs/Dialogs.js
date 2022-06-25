@@ -1,12 +1,14 @@
 import classes from "./Dialogs.module.css";
 import Dialog from "./Dialog/Dialog";
 
-const Dialogs = () => {
+
+const Dialogs = (props) => {
+
+    let DialogsElements = props.el.map (dialog => <Dialog name={dialog.name} id={dialog.id} />)
+
     return <div className={classes.dialogs}>
         Dialogs
-        <Dialog name="Dima" id="1" />
-        <Dialog name="Sveta" id="2"/>
-        <Dialog name="Andrey" id="3"/>
+        {DialogsElements}
     </div>
 }
 

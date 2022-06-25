@@ -1,11 +1,11 @@
 import classes from "./Messages.module.css";
 import Dialogs from "./Dialogs/Dialogs";
-import Chat from "./Chat/Chat";
-import {Outlet, Route, Router} from "react-router-dom";
+import {Outlet} from "react-router-dom";
 
-const Messages = () => {
+const Messages = (props) => {
     return <div className={classes.messages}>
-        <Dialogs/>
+        Messages
+        <Dialogs el={props.el}/>
         <Outlet />
     </div>
 }
