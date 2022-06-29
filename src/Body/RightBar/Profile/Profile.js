@@ -1,7 +1,8 @@
 import classes from './Profile.module.css';
 import Posts from "./Posts/Posts";
+import AreaPost from "./Posts/AreaPost/AreaPost";
 
-const Profile = () => {
+const Profile = (props) => {
     return (
         <div className={classes.profile}>
             Profile
@@ -9,7 +10,12 @@ const Profile = () => {
             <div className={classes.info}>
                 Всем привет
             </div>
-            <Posts />
+            <Posts el={props.el}  />
+            <AreaPost
+                Addpost={props.Addpost}
+                ChangeTextPost={props.ChangeTextPost}
+                N_el={props.N_el}
+            />
         </div>
     );
 }

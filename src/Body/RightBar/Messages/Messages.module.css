@@ -3,8 +3,9 @@
     border: solid black 5px;
 
     display: grid;
-    grid-template-rows: 0fr;
+    grid-template-rows: 8fr 2fr;
     grid-auto-columns: 2fr 8fr;
     grid-template-areas:
-    "d c";
+    "d c"
+    "d t";
 }

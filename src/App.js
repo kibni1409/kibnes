@@ -9,7 +9,14 @@ const App = (props) => {
         <BrowserRouter>
             <div className={classes.app_wrapper}>
                 <Header/>
-                <Body M_el={props.Appstate.messages} D_el={props.Appstate.dialogs} />
+                <Body
+                    ChangeTextPost={props.ChangeTextPost}
+                    AddPost={props.AddPost}
+                    M_el={props.State.messages}
+                    D_el={props.State.dialogs}
+                    P_el={props.State.posts}
+                    N_el={props.State.NewTextPost}
+                />
                 <Footer/>
             </div>
         </BrowserRouter>

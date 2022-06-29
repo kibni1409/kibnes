@@ -1,0 +1,7 @@
+.area_message {
+    grid-area: t;
+    border: solid black 5px;
+    background-color: #3ebe1b;
+    padding: 10px;
+    margin: 10px;
+}

@@ -6,7 +6,14 @@ const Body = (props) => {
     return (
         <div className={classes.body_wrapper}>
                 <LeftBar/>
-                <RightBar M_el={props.M_el} D_el={props.D_el} />
+                <RightBar
+                    ChangeTextPost={props.ChangeTextPost}
+                    Addpost={props.AddPost}
+                    M_el={props.M_el}
+                    D_el={props.D_el}
+                    P_el={props.P_el}
+                    N_el={props.N_el}
+                />
         </div>
     );
 }
