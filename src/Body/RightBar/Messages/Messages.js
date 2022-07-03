@@ -5,7 +5,6 @@ import AreaMessage from "./Chat/AreaMessage/AreaMessage";
 
 const Messages = (props) => {
     return <div className={classes.messages}>
-        Messages
         <Dialogs el={props.el}/>
         <Outlet />
         <AreaMessage/>

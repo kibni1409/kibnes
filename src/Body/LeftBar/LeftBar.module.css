@@ -1,23 +1,24 @@
 .leftbar_wrapper {
     text-align: center;
-    border: solid 5px black;
-    background-color: #11606e;
-    padding: 10px;
-    margin: 10px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
 }
 
 .item {
     font-size: 14pt;
-    color: aliceblue;
-    border: solid 5px black;
+    border-radius: 40px;
     background-color: #50bbce;
     padding: 10px;
     margin: 10px;
+    box-shadow: 0.4em 0.4em 10px rgba(19, 17, 17, 0.5);
+
 }
 
 
 .item.active {
     font-size: 14pt;
-    color: #7813a1;
-    background-color: #3ebe1b;
+    background-color: #C4EDDE;
 }

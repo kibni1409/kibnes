@@ -27,7 +27,7 @@ let store = {
         return this._state;
     },
     AddPost() {
-        
+
         let size = this.getState().posts.length;
         let post = {
             id: size,

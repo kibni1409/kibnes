@@ -1,7 +1,7 @@
 .post {
     text-align: center;
-    border: solid 5px black;
-    background-color: #8ba8c4;
+    border-radius: 40px;
     padding: 10px;
     margin: 10px;
+
 }

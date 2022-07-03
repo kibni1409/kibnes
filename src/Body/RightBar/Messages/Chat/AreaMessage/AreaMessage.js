@@ -12,17 +12,11 @@ const AreaMessage = () => {
 
     return (
         <div className={classes.area_message}>
-            AreaPost
-            <div >
-                <textarea ref={MessageElement}>
-                    Text message
+                <textarea ref={MessageElement} className={classes.textarea}>
                 </textarea>
-            </div>
-            <div>
-                <button onClick={MessageText} >
+                <button onClick={MessageText} className={classes.button}>
                     Send message
                 </button>
-            </div>
         </div>
     );
 }

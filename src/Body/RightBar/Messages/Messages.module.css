@@ -1,7 +1,4 @@
 .messages {
-    background-color: #bebe29;
-    border: solid black 5px;
-
     display: grid;
     grid-template-rows: 8fr 2fr;
     grid-auto-columns: 2fr 8fr;

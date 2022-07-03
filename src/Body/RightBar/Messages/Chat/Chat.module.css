@@ -1,7 +1,8 @@
 .chat{
-    background-color: #72be21;
-    border: solid black 5px;
+    background-color: #7AC7C4;
+    border-radius: 40px;
     padding: 10px;
-    margin: 10px;
+    box-shadow: 0.4em 0.4em 10px rgba(19, 17, 17, 0.5);
+
     grid-area: c;
 }

@@ -18,19 +18,16 @@ const AreaPost = (props) => {
 
     return (
         <div className={classes.areapost}>
-            AreaPost
-            <div >
-                <textarea
+                <textarea className={classes.textarea}
                     id="textPost"
                     ref={PostElement}
                     onChange={TextPostChange}
                     value={props.N_el}/>
-            </div>
-            <div>
-                <button onClick={PostText} >
+
+                <button onClick={PostText}  className={classes.button}>
                     Add post
                 </button>
-            </div>
+
         </div>
     );
 }

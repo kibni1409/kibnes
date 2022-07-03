@@ -5,7 +5,6 @@ import AreaPost from "./Posts/AreaPost/AreaPost";
 const Profile = (props) => {
     return (
         <div className={classes.profile}>
-            Profile
             <img src="https://avatars.yandex.net/get-music-user-playlist/59900/566735970.1000.49057/m1000x1000?1567501161045&webp=false" alt="ava"/>
             <div className={classes.info}>
                 Всем привет

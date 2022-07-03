@@ -1,22 +1,23 @@
 .profile {
     text-align: center;
-    border: solid 5px black;
-    background-color: #063e67;
+    border-radius: 40px;
+    background-color: #50bbce;
     padding: 10px;
     margin: 10px;
+    box-shadow: 0.4em 0.4em 10px rgba(19, 17, 17, 0.5);
 }
-
 
 .profile img{
     border-radius: 50px;
     width: 80px;
     height: 80px;
+    box-shadow: 0.4em 0.4em 10px rgba(19, 17, 17, 0.5);
 }
 
 .info{
-    border: solid black 5px;
-    background-color: #106658;
-    border-radius: 15px;
+    border-radius: 40px;
+    background-color: #F73859;
     padding: 10px;
     margin: 10px;
+    box-shadow: 0.4em 0.4em 10px rgba(19, 17, 17, 0.5);
 }

@@ -1,8 +1,11 @@
 .dialogs{
-    background-color: #72be21;
-    border: solid black 5px;
+    background-color: #7AC7C4;
     padding: 10px;
-    margin: 10px;
+    border-radius: 40px;
+    margin: 0  20px 0 0 ;
+    position: relative;
+    height: 100%;
+    box-shadow: 0.4em 0.4em 10px rgba(19, 17, 17, 0.5);
 
     grid-area: d;
 }

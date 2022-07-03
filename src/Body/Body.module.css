@@ -1,14 +1,12 @@
 .body_wrapper {
     text-align: center;
-    border: solid 5px black;
-    background-color: aqua;
+    background-color: #384259;
     padding: 10px;
-    margin: 10px 10px 0 10px ;
+    height: 862px;
 
     display: grid;
-    grid-template-rows: 0fr;
-    grid-auto-columns: 2fr 8fr;
-    /*grid-gap: 10px;*/
+    grid-template-rows: 100%;
+    grid-auto-columns: 2fr 10fr;
     grid-template-areas:
     "l r";
 }

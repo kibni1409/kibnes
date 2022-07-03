@@ -1,7 +1,12 @@
 .dialog{
-    background-color: #b1e777;
-    border: solid black 5px;
+    background-color: #50bbce;
+    border-radius: 40px;
     padding: 10px;
     margin: 10px;
+    box-shadow: 0.4em 0.4em 10px rgba(19, 17, 17, 0.5);
 
+}
+
+.dialog .active {
+    background-color: #C4EDDE;
 }

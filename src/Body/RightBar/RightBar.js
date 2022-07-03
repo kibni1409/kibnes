@@ -9,7 +9,6 @@ import AreaMessage from "./Messages/Chat/AreaMessage/AreaMessage";
 const RightBar = (props) => {
     return (
         <div className={classes.rightbar_wrapper}>
-            RightBar
             <Routes>
 
                 <Route path="profile" element={<Profile
