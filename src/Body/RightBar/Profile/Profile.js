@@ -11,8 +11,7 @@ const Profile = (props) => {
             </div>
             <Posts el={props.el}  />
             <AreaPost
-                Addpost={props.Addpost}
-                ChangeTextPost={props.ChangeTextPost}
+                dispatch={props.dispatch}
                 N_el={props.N_el}
             />
         </div>

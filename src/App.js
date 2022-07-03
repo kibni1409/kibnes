@@ -10,8 +10,7 @@ const App = (props) => {
             <div className={classes.app_wrapper}>
                 <Header/>
                 <Body
-                    ChangeTextPost={props.ChangeTextPost}
-                    AddPost={props.AddPost}
+                    dispatch={props.dispatch}
                     M_el={props.State.messages}
                     D_el={props.State.dialogs}
                     P_el={props.State.posts}

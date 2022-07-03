@@ -12,9 +12,8 @@ const RightBar = (props) => {
             <Routes>
 
                 <Route path="profile" element={<Profile
-                    Addpost={props.Addpost}
+                    dispatch={props.dispatch}
                     el={props.P_el}
-                    ChangeTextPost={props.ChangeTextPost}
                     N_el={props.N_el}
                 />}
                 />

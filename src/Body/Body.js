@@ -7,8 +7,7 @@ const Body = (props) => {
         <div className={classes.body_wrapper}>
                 <LeftBar/>
                 <RightBar
-                    ChangeTextPost={props.ChangeTextPost}
-                    Addpost={props.AddPost}
+                    dispatch={props.dispatch}
                     M_el={props.M_el}
                     D_el={props.D_el}
                     P_el={props.P_el}

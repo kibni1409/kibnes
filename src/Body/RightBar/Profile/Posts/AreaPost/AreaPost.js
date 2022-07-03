@@ -1,5 +1,7 @@
 import classes from './AreaPost.module.css';
 import React from "react";
+import {AddPostAction, ChangeTextAction} from "../../../../../Redux/State";
+
 
 const AreaPost = (props) => {
 
@@ -7,12 +9,14 @@ const AreaPost = (props) => {
 
     let PostText = () => {
         let text = PostElement.current.value;
-        props.Addpost(text);
+        let action = AddPostAction(text);
+        props.dispatch(action);
     }
 
     let TextPostChange = () => {
         let text = PostElement.current.value;
-        props.ChangeTextPost(text);
+        let action = ChangeTextAction(text);
+        props.dispatch(action);
     }
 
 

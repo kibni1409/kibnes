@@ -11,8 +11,7 @@ let Rerender = (state) => {
             <App
                 State={store.getState()}
                 Appstate={store.getState.bind(store)}
-                AddPost={store.AddPost.bind(store)}
-                ChangeTextPost={store.ChangeTextPost.bind(store)}
+                dispatch={store.dispatch.bind(store)}
             />
         </React.StrictMode>
     );

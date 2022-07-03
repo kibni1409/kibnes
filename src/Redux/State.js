@@ -26,25 +26,39 @@ let store = {
     getState() {
         return this._state;
     },
-    AddPost() {
-
-        let size = this.getState().posts.length;
-        let post = {
-            id: size,
-            texts: this.getState().NewTextPost
-        }
-        this.getState().posts.push(post);
-        this.getState().NewTextPost = "";
-        this.Rerender(this.getState());
-    },
-    ChangeTextPost(text){
-        this.getState().NewTextPost = text;
-        this.Rerender(this.getState());
-    },
     Subscriber(obserser){
         this.Rerender = obserser;
+    },
+    dispatch(action) {
+        if (action.type === "ADD-POST"){
+            let size = this.getState().posts.length;
+            let post = {
+                id: size,
+                texts: this.getState().NewTextPost
+            }
+            this.getState().posts.push(post);
+            this.getState().NewTextPost = "";
+            this.Rerender(this.getState());
+        }
+        else if(action.type === "CHANGE-TEXT-POST"){
+            this.getState().NewTextPost = action.text;
+            this.Rerender(this.getState());
+        }
     }
-
 }
+
+export const AddPostAction = () => {
+    return {
+        type: "ADD-POST"
+    }
+}
+
+export const ChangeTextAction = (text) => {
+    return {
+        type: "CHANGE-TEXT-POST",
+        text: text
+    }
+}
+
 
 export default store;
