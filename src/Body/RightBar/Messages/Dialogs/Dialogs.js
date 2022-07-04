@@ -4,9 +4,9 @@ import Dialog from "./Dialog/Dialog";
 
 const Dialogs = (props) => {
 
-    let DialogsElements = props.el.map(dialog => <Dialog name={dialog.name} id={dialog.id}/>)
-
+    let DialogsElements = props.D_el.map(dialog => <Dialog name={dialog.name} id={dialog.id}/>)
     return (
+
         <div className={classes.dialogs}>
             Dialogs
             {DialogsElements}

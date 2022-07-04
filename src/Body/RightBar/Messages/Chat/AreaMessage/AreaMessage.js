@@ -1,19 +1,32 @@
 import classes from './AreaMessage.module.css';
 import React from "react";
+import {AddMessageAction,ChangeTextMessageAction} from "../../../../../Redux/State";
 
-const AreaMessage = () => {
+const AreaMessage = (props) => {
 
     let MessageElement = React.createRef ();
 
     let MessageText = () => {
-        alert(MessageElement.current.value)
+        let text = MessageElement.current.value;
+        let action = AddMessageAction(text);
+        props.dispatch(action);
     }
 
+    let TextMessageChange = () => {
+        let text = MessageElement.current.value;
+        let action = ChangeTextMessageAction(text);
+        props.dispatch(action);
+    }
 
     return (
         <div className={classes.area_message}>
-                <textarea ref={MessageElement} className={classes.textarea}>
-                </textarea>
+                <textarea className={classes.textarea}
+                    id="textMessage"
+                    ref={MessageElement}
+                    onChange={TextMessageChange}
+                    value={props.n_el}
+                />
+
                 <button onClick={MessageText} className={classes.button}>
                     Send message
                 </button>

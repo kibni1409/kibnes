@@ -5,9 +5,9 @@ import AreaMessage from "./Chat/AreaMessage/AreaMessage";
 
 const Messages = (props) => {
     return <div className={classes.messages}>
-        <Dialogs el={props.el}/>
+        <Dialogs D_el={props.D_el}/>
         <Outlet />
-        <AreaMessage/>
+        <AreaMessage n_el={props.n_el} dispatch={props.dispatch}/>
     </div>
 }
 

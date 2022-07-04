@@ -1,6 +1,6 @@
 import classes from './AreaPost.module.css';
 import React from "react";
-import {AddPostAction, ChangeTextAction} from "../../../../../Redux/State";
+import {AddPostAction, ChangeTextPostAction} from "../../../../../Redux/State";
 
 
 const AreaPost = (props) => {
@@ -15,7 +15,7 @@ const AreaPost = (props) => {
 
     let TextPostChange = () => {
         let text = PostElement.current.value;
-        let action = ChangeTextAction(text);
+        let action = ChangeTextPostAction(text);
         props.dispatch(action);
     }
 
@@ -26,7 +26,8 @@ const AreaPost = (props) => {
                     id="textPost"
                     ref={PostElement}
                     onChange={TextPostChange}
-                    value={props.N_el}/>
+                    value={props.N_el}
+                />
 
                 <button onClick={PostText}  className={classes.button}>
                     Add post

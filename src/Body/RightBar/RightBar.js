@@ -11,14 +11,31 @@ const RightBar = (props) => {
         <div className={classes.rightbar_wrapper}>
             <Routes>
 
-                <Route path="profile" element={<Profile
-                    dispatch={props.dispatch}
-                    el={props.P_el}
-                    N_el={props.N_el}
-                />}
+                <Route path="profile"
+                       element={
+                           <Profile
+                               dispatch={props.dispatch}
+                               P_el={props.P_el}
+                               N_el={props.N_el}
+                           />
+                       }
                 />
-                <Route path="messages/*" element={<Messages el={props.D_el}/>}>
-                    <Route path=":id" element={<Chat el={props.M_el}/>}/>
+                <Route path="messages/*"
+                       element={
+                           <Messages
+                               n_el={props.n_el}
+                               dispatch={props.dispatch}
+                               D_el={props.D_el}
+                           />
+                       }
+                >
+                    <Route path=":id"
+                           element={
+                               <Chat
+                                   M_el={props.M_el}
+                               />
+                           }
+                    />
                 </Route>
             </Routes>
         </div>

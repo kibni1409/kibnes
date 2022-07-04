@@ -12,6 +12,7 @@ const Body = (props) => {
                     D_el={props.D_el}
                     P_el={props.P_el}
                     N_el={props.N_el}
+                    n_el={props.n_el}
                 />
         </div>
     );

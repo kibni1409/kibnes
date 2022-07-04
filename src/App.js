@@ -15,6 +15,7 @@ const App = (props) => {
                     D_el={props.State.dialogs}
                     P_el={props.State.posts}
                     N_el={props.State.NewTextPost}
+                    n_el={props.State.newTextMessage}
                 />
                 <Footer/>
             </div>

@@ -9,7 +9,7 @@ const Profile = (props) => {
             <div className={classes.info}>
                 Всем привет
             </div>
-            <Posts el={props.el}  />
+            <Posts P_el={props.P_el}  />
             <AreaPost
                 dispatch={props.dispatch}
                 N_el={props.N_el}

@@ -4,8 +4,8 @@ import Message from "./Message/Message";
 
 const Chat = (props) => {
 
-    let MessagesElement = props.el.map(message => {
-            if (message.idDialog == 1) {
+    let MessagesElement = props.M_el.map(message => {
+            if (message.idDialog == 2) {
                return (<Message message={message.message}/>)
             }
         }
