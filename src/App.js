@@ -11,11 +11,11 @@ const App = (props) => {
                 <Header/>
                 <Body
                     dispatch={props.dispatch}
-                    M_el={props.State.messages}
-                    D_el={props.State.dialogs}
-                    P_el={props.State.posts}
-                    N_el={props.State.NewTextPost}
-                    n_el={props.State.newTextMessage}
+                    M_el={props.State.messagepage.messages}
+                    D_el={props.State.messagepage.dialogs}
+                    P_el={props.State.profilepage.posts}
+                    N_el={props.State.profilepage.NewTextPost}
+                    n_el={props.State.messagepage.newTextMessage}
                 />
                 <Footer/>
             </div>

@@ -23,8 +23,8 @@ const RightBar = (props) => {
                 <Route path="messages/*"
                        element={
                            <Messages
-                               n_el={props.n_el}
-                               dispatch={props.dispatch}
+                               // n_el={props.n_el}
+                               // dispatch={props.dispatch}
                                D_el={props.D_el}
                            />
                        }
@@ -32,6 +32,8 @@ const RightBar = (props) => {
                     <Route path=":id"
                            element={
                                <Chat
+                                   n_el={props.n_el}
+                                   dispatch={props.dispatch}
                                    M_el={props.M_el}
                                />
                            }

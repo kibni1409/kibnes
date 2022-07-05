@@ -1,6 +1,6 @@
 import classes from './AreaMessage.module.css';
 import React from "react";
-import {AddMessageAction,ChangeTextMessageAction} from "../../../../../Redux/State";
+import {AddMessageAction,ChangeTextMessageAction} from "../../../../../Redux/MessageReduser";
 
 const AreaMessage = (props) => {
 

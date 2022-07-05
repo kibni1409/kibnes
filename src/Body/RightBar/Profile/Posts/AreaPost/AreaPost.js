@@ -1,6 +1,6 @@
 import classes from './AreaPost.module.css';
 import React from "react";
-import {AddPostAction, ChangeTextPostAction} from "../../../../../Redux/State";
+import {AddPostAction, ChangeTextPostAction} from "../../../../../Redux/ProfileReduser";
 
 
 const AreaPost = (props) => {

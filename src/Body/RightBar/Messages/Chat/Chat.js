@@ -1,5 +1,6 @@
 import classes from "./Chat.module.css";
 import Message from "./Message/Message";
+import AreaMessage from "./AreaMessage/AreaMessage";
 
 
 const Chat = (props) => {
@@ -15,6 +16,7 @@ const Chat = (props) => {
         <div className={classes.chat}>
             Chat
             {MessagesElement}
+            <AreaMessage n_el={props.n_el} dispatch={props.dispatch}/>
         </div>
     )
 }
