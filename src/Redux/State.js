@@ -1,7 +1,6 @@
 import ProfileReduser from "./ProfileReduser";
 import MessageReduser from "./MessageReduser";
 
-
 let store = {
     _state: {
         profilepage: {

@@ -1,6 +1,7 @@
 import classes from './Body.module.css';
 import LeftBar from "./LeftBar/LeftBar";
 import RightBar from "./RightBar/RightBar";
+import React  from 'react';
 
 const Body = (props) => {
     return (

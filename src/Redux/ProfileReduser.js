@@ -1,7 +1,16 @@
 let ADD_POST = "ADD-POST";
 let CHANGE_TEXT_POST = "CHANGE-TEXT-POST";
 
-let ProfileReduser = (state, action) => {
+let initialState = {
+        posts: [
+            {id: 0, text: 'Hello world!'},
+            {id: 1, text: 'Hello milk'},
+            {id: 2, text: 'Hello friends'}
+        ],
+        NewTextPost: 'ww'
+}
+
+let ProfileReduser = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
             let size = state.posts.length;

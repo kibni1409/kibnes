@@ -1,4 +1,5 @@
 import classes from "./Chat.module.css";
+import React  from 'react';
 import Message from "./Message/Message";
 import AreaMessage from "./AreaMessage/AreaMessage";
 

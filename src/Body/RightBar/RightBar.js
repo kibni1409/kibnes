@@ -3,7 +3,7 @@ import Profile from "./Profile/Profile";
 import {Route, Routes} from "react-router-dom";
 import Messages from "./Messages/Messages";
 import Chat from "./Messages/Chat/Chat";
-import AreaMessage from "./Messages/Chat/AreaMessage/AreaMessage";
+import React  from 'react';
 
 
 const RightBar = (props) => {

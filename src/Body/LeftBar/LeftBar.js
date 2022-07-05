@@ -1,5 +1,6 @@
 import classes from './LeftBar.module.css';
 import {NavLink} from "react-router-dom";
+import React  from 'react';
 
 const LeftBar = () => {
     return (

@@ -1,6 +1,7 @@
 import classes from './Profile.module.css';
 import Posts from "./Posts/Posts";
 import AreaPost from "./Posts/AreaPost/AreaPost";
+import React  from 'react';
 
 const Profile = (props) => {
     return (

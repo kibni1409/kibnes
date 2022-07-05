@@ -1,5 +1,6 @@
 import classes from './Posts.module.css';
 import Post from "./Post/Post";
+import React  from 'react';
 
 const Posts = (props) => {
     let ElementPost = props.P_el.map( post => <Post text={post.text}/>)

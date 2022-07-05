@@ -1,7 +1,7 @@
 import classes from "./Messages.module.css";
 import Dialogs from "./Dialogs/Dialogs";
 import {Outlet} from "react-router-dom";
-import AreaMessage from "./Chat/AreaMessage/AreaMessage";
+import React  from 'react';
 
 const Messages = (props) => {
     return <div className={classes.messages}>

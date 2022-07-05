@@ -1,7 +1,24 @@
 let SEND_MESSAGE = "SEND-MESSAGE";
 let CHANGE_TEXT_MESSAGE = "CHANGE-TEXT-MESSAGE";
 
-let MessageReduser = (state, action) => {
+let initialState = {
+        dialogs: [
+            {id: 0, name: "Dima"},
+            {id: 1, name: "Sveta"},
+            {id: 2, name: "Andrey"}
+        ],
+        messages: [
+            {id: 0, message: 'Hi', idDialog: 2},
+            {id: 1, message: 'Yo', idDialog: 2},
+            {id: 2, message: 'Normal', idDialog: 1},
+            {id: 3, message: 'Ok', idDialog: 1},
+            {id: 4, message: 'Yes, i to', idDialog: 0},
+            {id: 5, message: 'I am OK', idDialog: 0}
+        ],
+        newTextMessage: 'ee'
+}
+
+let MessageReduser = (state = initialState, action) => {
     switch (action.type){
         case SEND_MESSAGE:
 
