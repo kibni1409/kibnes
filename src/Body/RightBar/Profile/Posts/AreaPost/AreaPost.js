@@ -1,22 +1,16 @@
 import classes from './AreaPost.module.css';
 import React from "react";
-import {AddPostAction, ChangeTextPostAction} from "../../../../../Redux/ProfileReduser";
-
 
 const AreaPost = (props) => {
-
     let PostElement = React.createRef ();
 
-    let PostText = () => {
-        let text = PostElement.current.value;
-        let action = AddPostAction(text);
-        props.dispatch(action);
+    let onPostText = () => {
+        props.AddPost();
     }
 
-    let TextPostChange = () => {
+    let onTextPostChange = () => {
         let text = PostElement.current.value;
-        let action = ChangeTextPostAction(text);
-        props.dispatch(action);
+        props.ChangeTextPost(text);
     }
 
 
@@ -25,11 +19,11 @@ const AreaPost = (props) => {
                 <textarea className={classes.textarea}
                     id="textPost"
                     ref={PostElement}
-                    onChange={TextPostChange}
-                    value={props.N_el}
+                    onChange={onTextPostChange}
+                    value={props.TextPost}
                 />
 
-                <button onClick={PostText}  className={classes.button}>
+                <button onClick={onPostText}  className={classes.button}>
                     Add post
                 </button>
 

@@ -1,5 +1,4 @@
 .area_message {
-    grid-area: t;
     padding: 10px;
 
     display: grid;
@@ -8,18 +7,22 @@
     grid-template-areas:
     "text button";
 
+    grid-area: t;
 
 }
+
+
 
 .textarea {
     padding: 20px;
     border-radius: 20px;
     width: 95%;
-    grid-area: text;
     height: 50px;
     margin: 10px;
     box-shadow: 0.4em 0.4em 10px rgba(19, 17, 17, 0.5);
     resize: none;
+
+    grid-area: text;
 
 }
 
@@ -31,6 +34,7 @@
     border: none;
     height: 50px;
     width: 90%;
-    grid-area: button;
     box-shadow: 0.4em 0.4em 10px rgba(19, 17, 17, 0.5);
+
+    grid-area: button;
 }

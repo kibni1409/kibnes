@@ -1,6 +1,8 @@
 .messages {
     display: grid;
+    grid-auto-rows: 8fr 2fr;
     grid-auto-columns: 2fr 8fr;
     grid-template-areas:
     "d c"
+    "d t"
 }

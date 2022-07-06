@@ -3,7 +3,7 @@ import Post from "./Post/Post";
 import React  from 'react';
 
 const Posts = (props) => {
-    let ElementPost = props.P_el.map( post => <Post text={post.text}/>)
+    let ElementPost = props.Post_elements.map( post => <Post text={post.text}/>)
     return (
         <div className={classes.post}>
             Posts

@@ -4,8 +4,7 @@ import React  from 'react';
 
 
 const Dialogs = (props) => {
-
-    let DialogsElements = props.D_el.map(dialog => <Dialog name={dialog.name} id={dialog.id}/>)
+    let DialogsElements = props.Dialog_elements.map(dialog => <Dialog name={dialog.name} id={dialog.id}/>)
     return (
 
         <div className={classes.dialogs}>

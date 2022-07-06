@@ -1,21 +1,18 @@
 import classes from './AreaMessage.module.css';
 import React from "react";
-import {AddMessageAction,ChangeTextMessageAction} from "../../../../../Redux/MessageReduser";
 
 const AreaMessage = (props) => {
 
     let MessageElement = React.createRef ();
 
-    let MessageText = () => {
+    let onMessageText = () => {
         let text = MessageElement.current.value;
-        let action = AddMessageAction(text);
-        props.dispatch(action);
+        props.AddMessageAction(text);
     }
 
-    let TextMessageChange = () => {
+    let onTextMessageChange = () => {
         let text = MessageElement.current.value;
-        let action = ChangeTextMessageAction(text);
-        props.dispatch(action);
+        props.ChangeTextMessageAction(text);
     }
 
     return (
@@ -23,11 +20,11 @@ const AreaMessage = (props) => {
                 <textarea className={classes.textarea}
                     id="textMessage"
                     ref={MessageElement}
-                    onChange={TextMessageChange}
-                    value={props.n_el}
+                    onChange={onTextMessageChange}
+                    value={props.TextMessage}
                 />
 
-                <button onClick={MessageText} className={classes.button}>
+                <button onClick={onMessageText} className={classes.button}>
                     Send message
                 </button>
         </div>

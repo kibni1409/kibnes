@@ -3,16 +3,15 @@ import './index.module.css';
 import store from "./Redux/Store-redux";
 import ReactDOM from "react-dom/client";
 import App from "./App";
+import {Provider} from "./Store-Context";
 
 let Rerender = (state) => {
     const root = ReactDOM.createRoot(document.getElementById('root'));
     root.render(
         <React.StrictMode>
-            <App
-                State={store.getState()}
-                Appstate={store.getState.bind(store)}
-                dispatch={store.dispatch.bind(store)}
-            />
+            <Provider store={store}>
+                <App/>
+            </Provider>
         </React.StrictMode>
     );
 }
