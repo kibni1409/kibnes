@@ -1,6 +1,7 @@
 import classes from './Profile.module.css';
 import React  from 'react';
 import AreaPostContainer from "./Posts/AreaPost/AreaPostContainer";
+import PostContainer from "./Posts/PostContainer";
 
 const Profile = () => {
     return (
@@ -9,6 +10,7 @@ const Profile = () => {
             <div className={classes.info}>
                 Всем привет
             </div>
+            <PostContainer />
             <AreaPostContainer/>
         </div>
     );

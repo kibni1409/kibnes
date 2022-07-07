@@ -3,7 +3,8 @@ import './index.module.css';
 import store from "./Redux/Store-redux";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import {Provider} from "./Store-Context";
+import {Provider} from "react-redux";
+
 
 let Rerender = (state) => {
     const root = ReactDOM.createRoot(document.getElementById('root'));

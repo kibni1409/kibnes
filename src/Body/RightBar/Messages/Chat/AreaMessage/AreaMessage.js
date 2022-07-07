@@ -7,12 +7,12 @@ const AreaMessage = (props) => {
 
     let onMessageText = () => {
         let text = MessageElement.current.value;
-        props.AddMessageAction(text);
+        props.MessageText(text);
     }
 
     let onTextMessageChange = () => {
         let text = MessageElement.current.value;
-        props.ChangeTextMessageAction(text);
+        props.TextMessageChange(text);
     }
 
     return (
