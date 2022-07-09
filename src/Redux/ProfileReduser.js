@@ -12,19 +12,22 @@ let initialState = {
 
 let ProfileReduser = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_POST:
-            let size = state.posts.length;
-            let post = {
-                id: size,
-                text: state.NewTextPost
+        case ADD_POST: {
+            let sizePosts = state.posts.length;
+            let textPost = state.NewTextPost;
+            return {
+                ...state,
+                posts: [...state.posts, {id:sizePosts, text: textPost }],
+                NewTextPost: ''
             }
-            state.posts.push(post);
-            state.NewTextPost = "";
-         return state;
+        }
 
-        case CHANGE_TEXT_POST:
-            state.NewTextPost = action.text;
-            return state;
+        case CHANGE_TEXT_POST: {
+            return {
+                ...state,
+                NewTextPost: action.text
+            }
+        }
         default:
             return state;
     }

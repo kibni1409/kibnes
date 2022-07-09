@@ -20,23 +20,22 @@ let initialState = {
 
 let MessageReduser = (state = initialState, action) => {
     switch (action.type){
-        case SEND_MESSAGE:
-
+        case SEND_MESSAGE: {
+            let messageText = state.newTextMessage;
             let size = state.messages.length;
-            let message = {
-                id: size,
-                message: state.newTextMessage,
-                idDialog: 2
+            return {
+                ...state,
+                ...state.messages,
+                messages: [...state.messages, {id: size, message: messageText, idDialog: 2}],
+                newTextMessage: ''
             }
-            state.messages.push(message);
-            state.newTextMessage = "";
-            return state;
-
-        case CHANGE_TEXT_MESSAGE:
-
-            state.newTextMessage = action.text;
-            return state;
-
+        }
+        case CHANGE_TEXT_MESSAGE: {
+            return {
+                ...state,
+                newTextMessage: action.text
+            };
+        }
         default:
             return state;
     }
