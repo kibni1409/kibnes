@@ -3,6 +3,7 @@ import Profile from "./Profile/Profile";
 import {Route, Routes} from "react-router-dom";
 import Messages from "./Messages/Messages";
 import React from 'react';
+import UsersContainer from "./Friends/UsersContainer";
 
 
 const RightBar = () => {
@@ -11,6 +12,7 @@ const RightBar = () => {
             <Routes>
                 <Route path="profile" element={<Profile/>}/>
                 <Route path="messages/*" element={<Messages/>}/>
+                <Route path="users" element={<UsersContainer/>}/>
             </Routes>
         </div>
     );

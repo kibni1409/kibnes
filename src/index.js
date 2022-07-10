@@ -6,7 +6,6 @@ import App from "./App";
 import {Provider} from "react-redux";
 
 
-// let Rerender = (state) => {
     const root = ReactDOM.createRoot(document.getElementById('root'));
     root.render(
         <React.StrictMode>
@@ -15,12 +14,4 @@ import {Provider} from "react-redux";
             </Provider>
         </React.StrictMode>
     );
-// }
-
-// Rerender(store.getState());
-//
-// store.subscribe( () => {
-//     let state = store.getState();
-//     Rerender(state);
-// });
 
