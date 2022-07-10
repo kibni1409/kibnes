@@ -1,17 +1,11 @@
 let FOLLOW = "FOLLOW";
 let UNFOLLOW = "UNFOLLOW";
+let SET_USERS = "SET-USERS";
 
 let initialState = {
     users: [
-        {id: 0, name: "Dima", secondName: "Petrov", location: "St-Peterburg", follow: true, ava: "https://img2.goodfon.ru/wallpaper/nbig/e/ee/gunter-adventure-time-at.jpg"},
-        {id: 1, name: "Sveta", secondName: "Shilova", location: "Kiev", follow: true, ava: "https://img2.goodfon.ru/wallpaper/nbig/e/ee/gunter-adventure-time-at.jpg"},
-        {id: 2, name: "Olia", secondName: "Ivanova", location: "Moscow", follow: true, ava: "https://img2.goodfon.ru/wallpaper/nbig/e/ee/gunter-adventure-time-at.jpg"},
-        {id: 3, name: "Andrey", secondName: "Sidorov", location: "Vladivostok", follow: true, ava: "https://img2.goodfon.ru/wallpaper/nbig/e/ee/gunter-adventure-time-at.jpg"},
-        {id: 4, name: "Roma", secondName: "Julin", location: "Novgorod", follow: true, ava: "https://img2.goodfon.ru/wallpaper/nbig/e/ee/gunter-adventure-time-at.jpg"},
-        {id: 5, name: "Vlad", secondName: "Manin", location: "Permi", follow: true, ava: "https://img2.goodfon.ru/wallpaper/nbig/e/ee/gunter-adventure-time-at.jpg"},
-        {id: 6, name: "Nina", secondName: "Drozdova", location: "Viborg", follow: true, ava: "https://img2.goodfon.ru/wallpaper/nbig/e/ee/gunter-adventure-time-at.jpg"},
-    ],
-    newTextUsers: 'ee'
+
+    ]
 }
 
 let UsersReduser = (state = initialState, action) => {
@@ -42,6 +36,12 @@ let UsersReduser = (state = initialState, action) => {
                 })
             }
         }
+        case SET_USERS: {
+            return {
+                ...state,
+                users: [...state.users, ...action.users]
+            }
+        }
         default:
             return state;
     }
@@ -57,6 +57,12 @@ export const UnfollowAC = (id) => {
     return {
         type: "UNFOLLOW",
         userID: id
+    }
+}
+export const SetUsers = (users) => {
+    return {
+        type: "SET-USERS",
+        users: users
     }
 }
 
