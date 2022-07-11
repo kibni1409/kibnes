@@ -17,8 +17,13 @@ a{
 
 }
 
-
 .item.active {
     font-size: 14pt;
     background-color: #C4EDDE;
+}
+
+.active{
+    font-size: 20pt;
+    background-color: #C4EDDE;
+    color: #F73859;
 }

@@ -2,9 +2,6 @@ import React from 'react';
 import {connect} from "react-redux";
 import Chat from "./Chat";
 
-
-
-
 let mapStateToProps = (state) =>{
     return {
         Message_elements: state.MessagePage.messages

@@ -1,21 +1,45 @@
 import React from 'react';
-import classes from "./Users.module.css"
 import * as axios from "axios";
-import userPhoto from "../../../img/ava.png"
+import userPhoto from "../../../img/ava.png";
+import classes from "./Users.module.css";
 
 class Users extends React.Component {
-    constructor(props) {
-        super(props);
 
-        axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
+    componentDidMount() {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.pageCount}&count=${this.props.sizePage}`).then(response => {
             this.props.setUsers(response.data.items)
+            this.props.setTotalCount(response.data.totalCount)
+        })
+    }
+
+    onPageChange = (count) => {
+        this.props.setPageCount(count);
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${count}&count=${this.props.sizePage}`).then(response => {
+            this.props.setUsers(response.data.items)
+            this.props.setTotalCount(response.data.totalCount)
         })
     }
 
     render() {
-        console.log(this.props.users)
+
+        //let pageCount = Math.ceil(this.props.totalCount / this.props.sizePage);
+
+
+
+        let pages = [];
+        for (let i = 1; i <= 10; i++){
+            pages.push(i);
+        }
+        console.log(pages);
         return <div>
+            <div>
+                {pages.map(p => {
+                   return <span onClick={() => {this.onPageChange(p)}} className={this.props.pageCount === p ? classes.active : ""}>{p}/</span>
+                })
+                }
+            </div>
                 {
+
                     this.props.users.map(user => <div className={classes.user} key={user.id}>
                             <img alt="AVA" src={user.photos.small != null ? user.photos.small : userPhoto} className={classes.img}/>
                             <div>

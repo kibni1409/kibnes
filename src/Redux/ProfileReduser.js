@@ -21,7 +21,6 @@ let ProfileReduser = (state = initialState, action) => {
                 NewTextPost: ''
             }
         }
-
         case CHANGE_TEXT_POST: {
             return {
                 ...state,
@@ -32,7 +31,6 @@ let ProfileReduser = (state = initialState, action) => {
             return state;
     }
 }
-
 
 export const AddPostAction = () => {
     return {

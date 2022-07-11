@@ -2,7 +2,6 @@ import classes from "./Chat.module.css";
 import React  from 'react';
 import Message from "./Message/Message";
 
-
 const Chat = (props) => {
     let MessagesElement = props.Message_elements.map(message => {
             if (message.idDialog == 2) {
