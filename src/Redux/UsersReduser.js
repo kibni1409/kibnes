@@ -4,12 +4,14 @@ let SET_USERS = "SET-USERS";
 let SET_SIZE_PAGE = "SET-SIZE-PAGE";
 let SET_PAGE_COUNT = "SET-PAGE-COUNT";
 let SET_TOTAL_COUNT = "SET-TOTAL-COUNT";
+let IS_FEATCHING = "IS-FEATCHING";
 
 let initialState = {
     users: [],
     totalCount: 0,
     pageCount: 1,
-    sizePage: 10
+    sizePage: 10,
+    isFetching: false
 }
 
 let UsersReduser = (state = initialState, action) => {
@@ -63,6 +65,12 @@ let UsersReduser = (state = initialState, action) => {
                 totalCount: action.totalCount
             }
         }
+        case IS_FEATCHING: {
+            return {
+                ...state,
+                isFetching: action.isFetching
+            }
+        }
         default:
             return state;
     }
@@ -102,6 +110,12 @@ export const SetTotalCountAC = (count) => {
     return {
         type: "SET-TOTAL-COUNT",
         totalCount: count
+    }
+}
+export const IsFeatchingAC = (count) => {
+    return {
+        type: "IS-FEATCHING",
+        isFetching: count
     }
 }
 
