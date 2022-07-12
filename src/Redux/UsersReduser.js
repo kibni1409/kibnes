@@ -5,13 +5,19 @@ let SET_SIZE_PAGE = "SET-SIZE-PAGE";
 let SET_PAGE_COUNT = "SET-PAGE-COUNT";
 let SET_TOTAL_COUNT = "SET-TOTAL-COUNT";
 let IS_FEATCHING = "IS-FEATCHING";
+let TOTAL_PAGES = "TOTAL-PAGES";
+let COUNT_DOTE_START = "COUNT-DOTE-START";
+let COUNT_DOTE_END = "COUNT-DOTE-END";
 
 let initialState = {
     users: [],
     totalCount: 0,
-    pageCount: 1,
+    pageCount: 25,
     sizePage: 10,
-    isFetching: false
+    isFetching: false,
+    totalPages: 0,
+    countDoteStart: false,
+    countDoteEnd: false
 }
 
 let UsersReduser = (state = initialState, action) => {
@@ -71,51 +77,89 @@ let UsersReduser = (state = initialState, action) => {
                 isFetching: action.isFetching
             }
         }
+        case TOTAL_PAGES: {
+            return {
+                ...state,
+                totalPages: action.totalPages
+            }
+        }
+        case COUNT_DOTE_START: {
+            return {
+                ...state,
+                countDoteStart: action.dote
+
+            }
+        }
+        case COUNT_DOTE_END: {
+            return {
+                ...state,
+                countDoteEnd: action.dote
+
+            }
+        }
         default:
             return state;
     }
 }
 
-export const FollowAC = (id) =>{
+export const FollowUsers = (id) =>{
     return {
         type: "FOLLOW",
         userID: id
     }
 }
-export const UnfollowAC = (id) => {
+export const UnFollowUsers = (id) => {
     return {
         type: "UNFOLLOW",
         userID: id
     }
 }
-export const SetUsersAC = (users) => {
+export const setUsers = (users) => {
     return {
         type: "SET-USERS",
         users: users
     }
 }
-export const SetSizePageAC = (size) => {
+export const setSizePage = (size) => {
     return {
         type: "SET-SIZE-PAGE",
         sizePage: size
     }
 }
-export const SetPageCountAC = (count) => {
+export const setPageCount = (count) => {
     return {
         type: "SET-PAGE-COUNT",
         pageCount: count
     }
 }
-export const SetTotalCountAC = (count) => {
+export const setTotalCount = (count) => {
     return {
         type: "SET-TOTAL-COUNT",
         totalCount: count
     }
 }
-export const IsFeatchingAC = (count) => {
+export const IsFeatchingF = (count) => {
     return {
         type: "IS-FEATCHING",
         isFetching: count
+    }
+}
+export const setTotalPages = (count) => {
+    return {
+        type: "TOTAL-PAGES",
+        totalPages: count
+    }
+}
+export const setCountDoteStart = (dote) => {
+    return {
+        type: "COUNT-DOTE-START",
+        dote: dote
+    }
+}
+export const setCountDoteEnd = (dote) => {
+    return {
+        type: "COUNT-DOTE-END",
+        dote: dote
     }
 }
 

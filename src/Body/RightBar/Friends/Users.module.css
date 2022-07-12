@@ -16,4 +16,14 @@
 
 .active {
     font-weight: bold;
+    background-color: #ab0e28;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 40px;
+}
+.pagination{
+    background-color: #F73859;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 40px;
 }
