@@ -2,7 +2,7 @@
     text-align: center;
     background-color: #384259;
     padding: 10px;
-
+    height: 100vh;
 
     display: grid;
     grid-template-rows: 100%;

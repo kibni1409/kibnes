@@ -4,12 +4,13 @@ import {connect} from "react-redux";
 import {ProfileAction} from "../../../Redux/ProfileReduser";
 
 let ProfileContainer = (props) => {
-    return <Profile {...props} profile={props.profile}/>
+    return <Profile {...props} />
 }
 
 let mapStateToProps = (state) =>{
     return {
-        profile: state.ProfilePage.profile
+        profile: state.ProfilePage.profile,
+        id: state.Auth.userID
     }
 }
 

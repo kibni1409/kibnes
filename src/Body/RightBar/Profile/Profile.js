@@ -11,12 +11,19 @@ import ava from "../../../img/ava.png"
 let Profile = (props) => {
 
     let {userID} = useParams();
-    console.log(userID);
 
     useEffect(() => {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userID}`).then(response => {
-            props.setProfile(response.data)
-        })
+        if(userID === undefined){
+            
+            axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${props.id}`).then(response => {
+                props.setProfile(response.data)
+            })
+        }
+        else {
+            axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userID}`).then(response => {
+                props.setProfile(response.data)
+            })
+        }
     },[userID]);
 
     if(!props.profile){
