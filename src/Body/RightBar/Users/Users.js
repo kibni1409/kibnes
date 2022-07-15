@@ -1,12 +1,13 @@
 import React from 'react';
 import userPhoto from "../../../img/ava.png";
 import classes from "./Users.module.css";
-import preloader from "../../../img/XOsX.gif"
+import {NavLink} from "react-router-dom";
+import Preloader from "../../Preloader";
 
 let Users = (props) => {
     return (
         <>
-            {props.isFeatching ? <div><img alt="aaa" src={preloader}/></div> : null}
+            {props.isFeatching ? <Preloader/> : null}
             <div>
                 {
                     props.pages.map(p => {
@@ -47,10 +48,11 @@ let Users = (props) => {
                 }
             </div>
             {
-
                 props.users.map(user => props.isFeatching ? null : <div className={classes.user} key={user.id}>
+                       <NavLink to={'/profile/' + user.id}>
                         <img alt="AVA" src={user.photos.small != null ? user.photos.small : userPhoto}
                              className={classes.img}/>
+                       </NavLink>
                         <div>
                             {user.name}
                         </div>

@@ -2,13 +2,31 @@ import classes from './Profile.module.css';
 import React  from 'react';
 import AreaPostContainer from "./Posts/AreaPost/AreaPostContainer";
 import PostContainer from "./Posts/PostContainer";
+import Preloader from "../../Preloader";
+import {useParams} from "react-router-dom";
+import {useEffect} from "react";
+import * as axios from "axios";
+import ava from "../../../img/ava.png"
 
-const Profile = () => {
+let Profile = (props) => {
+
+    let {userID} = useParams();
+    console.log(userID);
+
+    useEffect(() => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userID}`).then(response => {
+            props.setProfile(response.data)
+        })
+    },[userID]);
+
+    if(!props.profile){
+        return <Preloader />
+    }
     return (
         <div className={classes.profile}>
-            <img src="https://avatars.yandex.net/get-music-user-playlist/59900/566735970.1000.49057/m1000x1000?1567501161045&webp=false" alt="ava"/>
+            <img src={props.profile.photos.small === null ? ava : props.profile.photos.small } alt="ava"/>
             <div className={classes.info}>
-                Всем привет
+               {userID} {props.profile.fullName}
             </div>
             <PostContainer />
             <AreaPostContainer/>

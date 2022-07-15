@@ -8,8 +8,6 @@ import {
 import UsersAPI from "./UsersAPI";
 
 
-
-
 let mapStateToProps = (state) => {
    return {
        users: state.UsersPage.users,
