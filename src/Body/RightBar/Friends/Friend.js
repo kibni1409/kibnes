@@ -1,11 +1,11 @@
 import React from 'react';
 import userPhoto from "../../../img/1_1WCjO1iYMo7J7Upp8KMfLA@2x.jpeg";
-import classes from "./Users.module.css";
+import classes from "./Friends.module.css";
 import {NavLink} from "react-router-dom";
 import Preloader from "../../Preloader";
 import {Follow, UnFollow} from "../../../API/API";
 
-let Users = (props) => {
+let Friend = (props) => {
     return (
         <>
             {props.isFeatching ? <Preloader/> : null}
@@ -49,7 +49,8 @@ let Users = (props) => {
                 }
             </div>
             {
-                props.users.map(user => props.isFeatching ? null : <div className={classes.user} key={user.id}>
+
+                props.friends.map(user => props.isFeatching ? null : <div className={classes.user} key={user.id}>
                        <NavLink to={'/profile/' + user.id}>
                         <img alt="AVA" src={user.photos.small != null ? user.photos.small : userPhoto}
                              className={classes.img}/>
@@ -86,4 +87,4 @@ let Users = (props) => {
 
 }
 
-export default Users;
+export default Friend;

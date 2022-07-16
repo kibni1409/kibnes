@@ -1,14 +1,14 @@
 import React from "react";
-import Users from "./Users";
-import {GetUsers} from "../../../API/API";
+import {GetFriends} from "../../../API/API";
+import Friend from "./Friend";
 
-class UsersAPI extends React.Component{
+class FriendsAPI extends React.Component{
 
     componentDidMount() {
         this.props.IsFeatchingF(true);
-        GetUsers(this.props.pageCount, this.props.sizePage).then(data => {
+        GetFriends(this.props.pageCount, this.props.sizePage).then(data => {
             this.props.IsFeatchingF(false);
-            this.props.setUsers(data.items)
+            this.props.setFriends(data.items)
             this.props.setTotalCount(data.totalCount)
         })
     }
@@ -16,9 +16,9 @@ class UsersAPI extends React.Component{
     onPageChange = (count) => {
         this.props.setPageCount(count);
         this.props.IsFeatchingF(true);
-        GetUsers(count, this.props.sizePage).then(data => {
+        GetFriends(count, this.props.sizePage).then(data => {
             this.props.IsFeatchingF(false);
-            this.props.setUsers(data.items)
+            this.props.setFriends(data.items)
             this.props.setTotalCount(data.totalCount)
         })
     }
@@ -27,15 +27,14 @@ class UsersAPI extends React.Component{
         let AllpageCount = Math.ceil(this.props.totalCount / this.props.sizePage);
         this.props.settotalPages(AllpageCount);
         let pages = [];
-
         for (let i = 1; i <= AllpageCount; i++){
             pages.push(i);
         }
-        return <Users
+        return <Friend
             pages={pages}
             onPageChange={this.onPageChange}
             pageCount={this.props.pageCount}
-            users={this.props.users}
+            friends={this.props.friends}
             isFeatching={this.props.isFetching}
             totalCount={this.props.totalCount}
             totalPages={this.props.totalPages}
@@ -51,4 +50,4 @@ class UsersAPI extends React.Component{
     }
 }
 
-export default UsersAPI;
+export default FriendsAPI;

@@ -3,13 +3,15 @@ import MessageReduser from "./MessageReduser";
 import ProfileReduser from "./ProfileReduser";
 import UsersReduser from "./UsersReduser";
 import AuthReduser from "./AuthReduser";
+import FriendsReduser from "./FriendsReduser";
 
 
 let redusers = combineReducers({
     MessagePage: MessageReduser,
     ProfilePage: ProfileReduser,
     UsersPage: UsersReduser,
-    Auth: AuthReduser
+    Auth: AuthReduser,
+    FriendsPage: FriendsReduser
 })
 
 let store = createStore(redusers);

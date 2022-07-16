@@ -4,6 +4,7 @@ import Messages from "./Messages/Messages";
 import React from 'react';
 import UsersContainer from "./Users/UsersContainer";
 import ProfileContainer from "./Profile/ProfileContainer";
+import FriendsContainer from "./Friends/FriendsContainer";
 
 
 const RightBar = () => {
@@ -16,6 +17,7 @@ const RightBar = () => {
                 </Route>
                 <Route path="messages/*" element={<Messages/>}/>
                 <Route path="users" element={<UsersContainer/>}/>
+                <Route path="friends" element={<FriendsContainer/>}/>
                 <Route path="*" element={<h1>404</h1>}/>
             </Routes>
         </div>
