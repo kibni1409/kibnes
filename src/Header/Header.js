@@ -4,7 +4,7 @@ import React  from 'react';
 const Header = (props) => {
     return (
         <div className={classes.header_wrapper}>
-            {props.isAuth === false ? 'Login' : props.login}
+            {props.isAuth === false ? 'Unknown Login' : props.login}
         </div>
     );
 }

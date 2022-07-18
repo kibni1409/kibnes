@@ -1,5 +1,5 @@
-let SEND_MESSAGE = "SEND-MESSAGE";
-let CHANGE_TEXT_MESSAGE = "CHANGE-TEXT-MESSAGE";
+let SEND_MESSAGE = "SEND_MESSAGE";
+let CHANGE_TEXT_MESSAGE = "CHANGE_TEXT_MESSAGE";
 
 let initialState = {
         dialogs: [
@@ -18,7 +18,7 @@ let initialState = {
         newTextMessage: 'ee'
 }
 
-let MessageReduser = (state = initialState, action) => {
+let MessageReducer = (state = initialState, action) => {
     switch (action.type){
         case SEND_MESSAGE: {
             let messageText = state.newTextMessage;
@@ -43,14 +43,14 @@ let MessageReduser = (state = initialState, action) => {
 
 export const AddMessageAction = () =>{
     return {
-        type: "SEND-MESSAGE"
+        type: "SEND_MESSAGE"
     }
 }
 export const ChangeTextMessageAction = (text) => {
     return {
-        type: "CHANGE-TEXT-MESSAGE",
+        type: "CHANGE_TEXT_MESSAGE",
         text: text
     }
 }
 
-export default MessageReduser;
+export default MessageReducer;

@@ -1,8 +1,8 @@
 import React from 'react';
 import Profile from "./Profile";
 import {connect} from "react-redux";
-import {ProfileAction} from "../../../Redux/ProfileReduser";
-import {IsFeatchingF} from "../../../Redux/UsersReduser";
+import {ProfileAction} from "../../../Redux/ProfileReducer";
+import {IsFeatchingF} from "../../../Redux/UsersReducer";
 
 let ProfileContainer = (props) => {
     return <Profile {...props} />

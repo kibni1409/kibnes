@@ -1,18 +1,19 @@
+import {usersAPI} from "../API/API";
+
 let FOLLOW = "FOLLOW";
 let UNFOLLOW = "UNFOLLOW";
-let SET_USERS = "SET-USERS";
-let SET_SIZE_PAGE = "SET-SIZE-PAGE";
-let SET_PAGE_COUNT = "SET-PAGE-COUNT";
-let SET_TOTAL_COUNT = "SET-TOTAL-COUNT";
-let IS_FEATCHING = "IS-FEATCHING";
-let TOTAL_PAGES = "TOTAL-PAGES";
-let COUNT_DOTE_START = "COUNT-DOTE-START";
-let COUNT_DOTE_END = "COUNT-DOTE-END";
+let SET_USERS = "SET_USERS";
+let SET_PAGE_COUNT = "SET_PAGE_COUNT";
+let SET_TOTAL_COUNT = "SET_TOTAL_COUNT";
+let IS_FEATCHING = "IS_FEATCHING";
+let TOTAL_PAGES = "TOTAL_PAGES";
+let COUNT_DOTE_START = "COUNT_DOTE_START";
+let COUNT_DOTE_END = "COUNT_DOTE_END";
 
 let initialState = {
     users: [],
     totalCount: 0,
-    pageCount: 25,
+    pageCount: 1,
     sizePage: 10,
     isFetching: false,
     totalPages: 0,
@@ -20,7 +21,7 @@ let initialState = {
     countDoteEnd: false
 }
 
-let UsersReduser = (state = initialState, action) => {
+let UsersReducer = (state = initialState, action) => {
     switch (action.type){
         case FOLLOW: {
             return {
@@ -51,12 +52,6 @@ let UsersReduser = (state = initialState, action) => {
                 ...state,
                 ...state.users,
                 users: action.users
-            }
-        }
-        case SET_SIZE_PAGE: {
-            return {
-                ...state,
-                sizePage: action.sizePage
             }
         }
         case SET_PAGE_COUNT: {
@@ -114,53 +109,86 @@ export const UnFollowUsers = (id) => {
         userID: id
     }
 }
-export const setUsers = (users) => {
-    return {
-        type: "SET-USERS",
-        users: users
-    }
-}
-export const setSizePage = (size) => {
-    return {
-        type: "SET-SIZE-PAGE",
-        sizePage: size
-    }
-}
 export const setPageCount = (count) => {
     return {
-        type: "SET-PAGE-COUNT",
+        type: "SET_PAGE_COUNT",
         pageCount: count
+    }
+}
+export const setUsers = (users) => {
+    return{
+        type: "SET_USERS",
+        users: users
     }
 }
 export const setTotalCount = (count) => {
     return {
-        type: "SET-TOTAL-COUNT",
+        type: "SET_TOTAL_COUNT",
         totalCount: count
     }
 }
 export const IsFeatchingF = (bool) => {
     return {
-        type: "IS-FEATCHING",
+        type: "IS_FEATCHING",
         isFetching: bool
     }
 }
 export const setTotalPages = (count) => {
     return {
-        type: "TOTAL-PAGES",
+        type: "TOTAL_PAGES",
         totalPages: count
     }
 }
 export const setCountDoteStart = (dote) => {
     return {
-        type: "COUNT-DOTE-START",
+        type: "COUNT_DOTE_START",
         dote: dote
     }
 }
 export const setCountDoteEnd = (dote) => {
     return {
-        type: "COUNT-DOTE-END",
+        type: "COUNT_DOTE_END",
         dote: dote
     }
 }
 
-export default UsersReduser;
+export const setUsersThunk = (pageCount, sizePage) => {
+    return dispatch =>{
+        dispatch(IsFeatchingF(true));
+
+        usersAPI.GetUsers(pageCount, sizePage).then(data => {
+            dispatch(IsFeatchingF(false));
+            dispatch(setUsers(data.items));
+            dispatch(setPageCount(pageCount));
+            dispatch(setTotalCount(data.totalCount));
+        })
+    }
+}
+
+export const FollowUserThunk = (userID) => {
+    return dispatch => {
+        dispatch(IsFeatchingF(true));
+
+        usersAPI.Follow(userID).then(data => {
+            if(data.resultCode === 0){
+                dispatch(FollowUsers(userID));
+            }
+            dispatch(IsFeatchingF(false));
+        })
+    }
+}
+
+export const unFollowUserThunk = (userID) => {
+    return dispatch => {
+        dispatch(IsFeatchingF(true));
+
+        usersAPI.UnFollow(userID).then(data => {
+            if(data.resultCode === 0){
+               dispatch(UnFollowUsers(userID));
+            }
+            dispatch(IsFeatchingF(false));
+        })
+    }
+}
+
+export default UsersReducer;

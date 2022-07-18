@@ -1,13 +1,15 @@
-let FOLLOW_FRIEND = "FOLLOW-FRIEND";
-let UNFOLLOW_FRIEND = "UNFOLLOW-FRIEND";
-let SET_FRIENDS = "SET-FRIENDS";
-let SET_SIZE_PAGE_FRIEND = "SET-SIZE-PAGE-FRIEND";
-let SET_PAGE_COUNT_FRIEND = "SET-PAGE-COUNT-FRIEND";
-let SET_TOTAL_COUNT_FRIEND = "SET-TOTAL-COUNT-FRIEND";
-let IS_FEATCHING_FRIEND = "IS-FEATCHING-FRIEND";
-let TOTAL_PAGES_FRIEND = "TOTAL-PAGES-FRIEND";
-let COUNT_DOTE_START_FRIEND = "COUNT-DOTE-START-FRIEND";
-let COUNT_DOTE_END_FRIEND = "COUNT-DOTE-END-FRIEND";
+import {usersAPI} from "../API/API";
+
+let FOLLOW_FRIEND = "FOLLOW_FRIEND";
+let UNFOLLOW_FRIEND = "UNFOLLOW_FRIEND";
+let SET_FRIENDS = "SET_FRIENDS";
+let SET_SIZE_PAGE_FRIEND = "SET-SIZE_PAGE_FRIEND";
+let SET_PAGE_COUNT_FRIEND = "SET_PAGE_COUNT_FRIEND";
+let SET_TOTAL_COUNT_FRIEND = "SET_TOTAL_COUNT_FRIEND";
+let IS_FEATCHING_FRIEND = "IS_FEATCHING_FRIEND";
+let TOTAL_PAGES_FRIEND = "TOTAL_PAGES_FRIEND";
+let COUNT_DOTE_START_FRIEND = "COUNT_DOTE_START_FRIEND";
+let COUNT_DOTE_END_FRIEND = "COUNT_DOTE_END_FRIEND";
 
 let initialState = {
     friends: [],
@@ -20,7 +22,7 @@ let initialState = {
     countDoteEnd: false
 }
 
-let FriendsReduser = (state = initialState, action) => {
+let FriendsReducer = (state = initialState, action) => {
     switch (action.type){
         case FOLLOW_FRIEND: {
             return {
@@ -104,63 +106,104 @@ let FriendsReduser = (state = initialState, action) => {
 
 export const FollowFriends = (id) =>{
     return {
-        type: "FOLLOW-FRIEND",
+        type: "FOLLOW_FRIEND",
         userID: id
     }
 }
 export const UnFollowFriends = (id) => {
     return {
-        type: "UNFOLLOW-FRIEND",
+        type: "UNFOLLOW_FRIEND",
         userID: id
     }
 }
 export const setFriends = (friends) => {
     return {
-        type: "SET-FRIENDS",
+        type: "SET_FRIENDS",
         friends: friends
     }
 }
 export const setSizePage = (size) => {
     return {
-        type: "SET-SIZE-PAGE-FRIEND",
+        type: "SET_SIZE_PAGE_FRIEND",
         sizePage: size
     }
 }
 export const setPageCount = (count) => {
     return {
-        type: "SET-PAGE-COUNT-FRIEND",
+        type: "SET_PAGE_COUNT_FRIEND",
         pageCount: count
     }
 }
 export const setTotalCount = (count) => {
     return {
-        type: "SET-TOTAL-COUNT-FRIEND",
+        type: "SET_TOTAL_COUNT_FRIEND",
         totalCount: count
     }
 }
 export const IsFeatchingF = (bool) => {
     return {
-        type: "IS-FEATCHING-FRIEND",
+        type: "IS_FEATCHING_FRIEND",
         isFetching: bool
     }
 }
 export const setTotalPages = (count) => {
     return {
-        type: "TOTAL-PAGES-FRIEND",
+        type: "TOTAL_PAGES_FRIEND",
         totalPages: count
     }
 }
 export const setCountDoteStart = (dote) => {
     return {
-        type: "COUNT-DOTE-START-FRIEND",
+        type: "COUNT_DOTE_START_FRIEND",
         dote: dote
     }
 }
 export const setCountDoteEnd = (dote) => {
     return {
-        type: "COUNT-DOTE-END-FRIEND",
+        type: "COUNT_DOTE_END_FRIEND",
         dote: dote
     }
 }
 
-export default FriendsReduser;
+export const setFriendsThunk = (pageCount, sizePage) => {
+    return dispatch =>{
+        dispatch(IsFeatchingF(true));
+
+        usersAPI.GetFriends(pageCount, sizePage).then(data => {
+            dispatch(IsFeatchingF(false));
+            dispatch(setFriends(data.items));
+            dispatch(setPageCount(pageCount));
+            dispatch(setTotalCount(data.totalCount));
+        })
+    }
+}
+
+export const FollowFriendThunk = (userID) => {
+    return dispatch => {
+        dispatch(IsFeatchingF(true));
+
+        usersAPI.Follow(userID).then(data => {
+            if(data.resultCode === 0){
+                dispatch(FollowFriends(userID));
+            }
+            dispatch(IsFeatchingF(false));
+        })
+    }
+}
+
+export const unFollowFriendThunk = (userID) => {
+    return dispatch => {
+        dispatch(IsFeatchingF(true));
+
+        usersAPI.UnFollow(userID).then(data => {
+            if(data.resultCode === 0){
+                dispatch(UnFollowFriends(userID));
+            }
+            dispatch(IsFeatchingF(false));
+        })
+    }
+}
+
+
+
+export default FriendsReducer;

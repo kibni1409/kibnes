@@ -1,9 +1,14 @@
 import React from "react";
 import {connect} from "react-redux";
 import {
-    IsFeatchingF, setCountDoteEnd, setCountDoteStart, setPageCount, setSizePage, setTotalCount, setTotalPages,
-    FollowFriends, UnFollowFriends, setFriends
-} from "../../../Redux/FriendsReduser";
+    setCountDoteEnd,
+    setCountDoteStart,
+    setPageCount,
+    setTotalPages,
+    setFriendsThunk,
+    FollowFriendThunk,
+    unFollowFriendThunk
+} from "../../../Redux/FriendsReducer";
 import FriendsAPI from "./FriendsAPI";
 
 
@@ -22,35 +27,17 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
     return {
-        FollowUsers: (id) => {
-            let action = FollowFriends(id);
-            dispatch(action);
+        FollowFriendThunk: (id) => {
+            dispatch(FollowFriendThunk(id));
         },
-        UnFollowUsers: (id) => {
-            let action = UnFollowFriends(id);
-            dispatch(action);
-        },
-        setFriends: (friends) => {
-            let action = setFriends(friends);
-            dispatch(action);
-        },
-        setSizePage: (size) => {
-            let action = setSizePage(size);
-            dispatch(action);
+        unFollowFriendThunk: (id) => {
+            dispatch(unFollowFriendThunk(id));
         },
         setPageCount: (count) => {
             let action = setPageCount(count);
             dispatch(action);
         },
-        setTotalCount: (count) => {
-            let action = setTotalCount(count);
-            dispatch(action);
-        },
-        IsFeatchingF: (bool) => {
-            let action = IsFeatchingF(bool);
-            dispatch(action);
-        },
-        settotalPages: (count) =>{
+        setTotalPages: (count) =>{
             let action = setTotalPages(count);
             dispatch(action);
         },
@@ -61,6 +48,9 @@ let mapDispatchToProps = (dispatch) => {
         setcountDoteEnd: (dote) => {
             let action = setCountDoteEnd(dote);
             dispatch(action);
+        },
+        setFriendsThunk: (pageCount, sizePage) =>{
+            dispatch(setFriendsThunk(pageCount, sizePage))
         }
     }
 }

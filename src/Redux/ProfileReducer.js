@@ -1,6 +1,6 @@
-let ADD_POST = "ADD-POST";
-let CHANGE_TEXT_POST = "CHANGE-TEXT-POST";
-let SET_PROFILE = "SET-PROFILE";
+let ADD_POST = "ADD_POST";
+let CHANGE_TEXT_POST = "CHANGE_TEXT_POST";
+let SET_PROFILE = "SET_PROFILE";
 
 let initialState = {
     posts: [
@@ -12,7 +12,7 @@ let initialState = {
     profile: null
 }
 
-let ProfileReduser = (state = initialState, action) => {
+let ProfileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST: {
             let sizePosts = state.posts.length;
@@ -43,20 +43,20 @@ let ProfileReduser = (state = initialState, action) => {
 
 export const AddPostAction = () => {
     return {
-        type: "ADD-POST"
+        type: "ADD_POST"
     }
 }
 export const ChangeTextPostAction = (text) => {
     return {
-        type: "CHANGE-TEXT-POST",
+        type: "CHANGE_TEXT_POST",
         text: text
     }
 }
 export const ProfileAction = (profile) => {
     return {
-        type: "SET-PROFILE",
+        type: "SET_PROFILE",
         profile
     }
 }
 
-export default ProfileReduser;
+export default ProfileReducer;

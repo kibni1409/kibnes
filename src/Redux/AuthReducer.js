@@ -1,4 +1,6 @@
-const SET_USER_DATA = "SET-USER-DATA";
+import {usersAPI} from "../API/API";
+
+const SET_USER_DATA = "SET_USER_DATA";
 
 let initialState = {
     login: null,
@@ -7,7 +9,7 @@ let initialState = {
     isAuth: false
 }
 
-let AutchReduser = (state = initialState, action) => {
+let AutchReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_USER_DATA: {
             return {
@@ -25,10 +27,19 @@ let AutchReduser = (state = initialState, action) => {
 
 export const SetUserDataAC = (userID, login, email) => {
     return {
-        type: "SET-USER-DATA",
+        type: "SET_USER_DATA",
         action: {userID, login, email}
     }
 
 }
 
-export default AutchReduser;
+export const AuthMeThunk = () => {
+    return dispatch => {
+        usersAPI.AuthMe().then(data => {
+            dispatch(SetUserDataAC(data.data.id, data.data.login, data.data.email));
+            }
+        );
+    }
+}
+
+export default AutchReducer;

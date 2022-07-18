@@ -3,12 +3,11 @@ import userPhoto from "../../../img/1_1WCjO1iYMo7J7Upp8KMfLA@2x.jpeg";
 import classes from "./Friends.module.css";
 import {NavLink} from "react-router-dom";
 import Preloader from "../../Preloader";
-import {Follow, UnFollow} from "../../../API/API";
 
 let Friend = (props) => {
     return (
         <>
-            {props.isFeatching ? <Preloader/> : null}
+            {props.isFetching ? <Preloader/> : null}
             <div>
                 {
                     props.pages.map(p => {
@@ -43,14 +42,12 @@ let Friend = (props) => {
                                 props.onPageChange(p)
                             }} key={p} className={props.pageCount === p ? classes.active : classes.pagination}>{p}</span>
                         }
-
-
                 })
                 }
             </div>
             {
 
-                props.friends.map(user => props.isFeatching ? null : <div className={classes.user} key={user.id}>
+                props.friends.map(user => props.isFetching ? null : <div className={classes.user} key={user.id}>
                        <NavLink to={'/profile/' + user.id}>
                         <img alt="AVA" src={user.photos.small != null ? user.photos.small : userPhoto}
                              className={classes.img}/>
@@ -61,21 +58,13 @@ let Friend = (props) => {
                         <div>
                             {user.followed
                                 ? <button onClick={() => {
-                                    UnFollow(user.id).then(data => {
-                                        if(data.resultCode === 0){
-                                            props.UnFollowUsers(user.id)
-                                            props.onPageChange(props.pageCount)
-                                        }
-                                    })
+                                    debugger;
+                                    props.unFollowFriendThunk(user.id);
+                                    if(props.isFetching ? null : props.onPageChange(props.pageCount));
                                 }}>Unfollow</button>
                                 : <button onClick={() => {
-
-                                    Follow(user.id).then(data => {
-                                        if(data.resultCode === 0){
-                                            props.FollowUsers(user.id)
-                                            props.onPageChange(props.pageCount)
-                                        }
-                                    })
+                                    props.FollowFriendThunk(user.id);
+                                    if(props.isFetching ? null : props.onPageChange(props.pageCount));
                                 }}>Follow</button>}
                         </div>
                     </div>

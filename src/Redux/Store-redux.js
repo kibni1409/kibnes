@@ -1,20 +1,21 @@
-import {combineReducers, createStore} from "redux";
-import MessageReduser from "./MessageReduser";
-import ProfileReduser from "./ProfileReduser";
-import UsersReduser from "./UsersReduser";
-import AuthReduser from "./AuthReduser";
-import FriendsReduser from "./FriendsReduser";
+import {applyMiddleware, combineReducers, createStore} from "redux";
+import MessageReducer from "./MessageReducer";
+import ProfileReducer from "./ProfileReducer";
+import UsersReducer from "./UsersReducer";
+import AuthReducer from "./AuthReducer";
+import FriendsReducer from "./FriendsReducer";
+import thunk from "redux-thunk"
+import { composeWithDevTools } from 'redux-devtools-extension';
 
-
-let redusers = combineReducers({
-    MessagePage: MessageReduser,
-    ProfilePage: ProfileReduser,
-    UsersPage: UsersReduser,
-    Auth: AuthReduser,
-    FriendsPage: FriendsReduser
+let reducers = combineReducers({
+    MessagePage: MessageReducer,
+    ProfilePage: ProfileReducer,
+    UsersPage: UsersReducer,
+    Auth: AuthReducer,
+    FriendsPage: FriendsReducer
 })
 
-let store = createStore(redusers);
+const store = createStore(reducers,composeWithDevTools(applyMiddleware(thunk)));
 
 window.store = store;
 

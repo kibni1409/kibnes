@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 import AreaMessage from "./AreaMessage";
-import {AddMessageAction, ChangeTextMessageAction} from "../../../../../Redux/MessageReduser";
+import {AddMessageAction, ChangeTextMessageAction} from "../../../../../Redux/MessageReducer";
 
 let mapStateToProps = (state) =>{
     return {
