@@ -1,9 +1,9 @@
 import classes from './App.module.css';
 import Body from "./Body/Body.js";
-import Footer from "./Footer/Footer";
+import Footer from "./Component/Footer/Footer";
 import {BrowserRouter} from "react-router-dom";
 import React  from 'react';
-import HeaderContainer from "./Header/HeaderContainer";
+import HeaderContainer from "./Component/Header/HeaderContainer";
 
 const App = () => {
     return (

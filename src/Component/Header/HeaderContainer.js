@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import Header from "./Header";
 import {connect} from "react-redux";
-import {AuthMeThunk, SetUserDataAC} from "../Redux/AuthReducer";
+import {AuthMeThunk, SetUserDataAC} from "../../Redux/AuthReducer";
 import {useParams} from "react-router-dom";
 
 

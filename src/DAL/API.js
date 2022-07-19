@@ -40,5 +40,10 @@ export const usersAPI = {
             resronse => resronse.data
         )
 
+    },
+    InfoProfile(userID){
+        return instance.get(`profile/${userID}`).then(
+            resronse => resronse.data
+        )
     }
 }

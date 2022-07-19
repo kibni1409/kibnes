@@ -1,12 +1,6 @@
-import React from 'react';
-import Profile from "./Profile";
 import {connect} from "react-redux";
-import {ProfileAction} from "../../../Redux/ProfileReducer";
-import {IsFeatchingF} from "../../../Redux/UsersReducer";
-
-let ProfileContainer = (props) => {
-    return <Profile {...props} />
-}
+import {InfoProfileThunk} from "../../../Redux/ProfileReducer";
+import ProfileAPI from "./ProfileAPI";
 
 let mapStateToProps = (state) =>{
     return {
@@ -18,15 +12,10 @@ let mapStateToProps = (state) =>{
 
 let mapDispatchToProps = (dispatch) =>{
     return {
-        setProfile: (user) => {
-            let action = ProfileAction(user);
-            dispatch(action)
-        },
-        setIsFeatchinf: (bool) =>{
-            let action = IsFeatchingF(bool);
-            dispatch(action);
+        InfoProfileThunk: (userID) => {
+            dispatch(InfoProfileThunk(userID));
         }
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileAPI);

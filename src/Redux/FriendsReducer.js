@@ -1,4 +1,4 @@
-import {usersAPI} from "../API/API";
+import {usersAPI} from "../DAL/API";
 
 let FOLLOW_FRIEND = "FOLLOW_FRIEND";
 let UNFOLLOW_FRIEND = "UNFOLLOW_FRIEND";

@@ -1,6 +1,9 @@
+import {usersAPI as userAPI} from "../DAL/API";
+
 let ADD_POST = "ADD_POST";
 let CHANGE_TEXT_POST = "CHANGE_TEXT_POST";
 let SET_PROFILE = "SET_PROFILE";
+let IS_FEATCHING_PROFILE = "IS_FEATCHING_PROFILE";
 
 let initialState = {
     posts: [
@@ -9,7 +12,8 @@ let initialState = {
         {id: 2, text: 'Hello friends'}
     ],
     NewTextPost: 'ww',
-    profile: null
+    profile: null,
+    isFetching: false,
 }
 
 let ProfileReducer = (state = initialState, action) => {
@@ -34,7 +38,12 @@ let ProfileReducer = (state = initialState, action) => {
                 ...state,
                 profile: action.profile
             }
-            debugger;
+        }
+        case IS_FEATCHING_PROFILE: {
+            return {
+                ...state,
+                isFetching: action.isFetching
+            }
         }
         default:
             return state;
@@ -56,6 +65,22 @@ export const ProfileAction = (profile) => {
     return {
         type: "SET_PROFILE",
         profile
+    }
+}
+export const IsFeatchingF = (bool) => {
+    return {
+        type: "IS_FEATCHING_PROFILE",
+        isFetching: bool
+    }
+}
+
+export const InfoProfileThunk = (userID) => {
+    return (dispatch) => {
+        dispatch(IsFeatchingF(true));
+        userAPI.InfoProfile(userID).then(data => {
+            dispatch(ProfileAction(data));
+            dispatch(IsFeatchingF(false));
+        })
     }
 }
 
