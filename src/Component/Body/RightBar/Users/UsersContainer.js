@@ -7,8 +7,10 @@ import {
     setUsersThunk,
     unFollowUserThunk,
     FollowUserThunk,
-} from "../../../Redux/UsersReducer";
+} from "../../../../Redux/UsersReducer";
 import UsersAPI from "./UsersAPI";
+import {compose} from "redux";
+import withAuthRedirect from "../../../../HOC/withAuthRedirect";
 
 let mapStateToProps = (state) => {
    return {
@@ -20,6 +22,7 @@ let mapStateToProps = (state) => {
        totalPages: state.UsersPage.totalPages,
        countDoteStart: state.UsersPage.countDoteStart,
        countDoteEnd: state.UsersPage.countDoteEnd,
+       isAuth: state.Auth.isAuth
    }
 }
 
@@ -53,6 +56,8 @@ let mapDispatchToProps = (dispatch) => {
     }
 }
 
-let UsersContainer = connect(mapStateToProps,mapDispatchToProps)(UsersAPI);
+export default compose(
+    connect(mapStateToProps,mapDispatchToProps),
+    withAuthRedirect,
+)(UsersAPI)
 
-export default UsersContainer;

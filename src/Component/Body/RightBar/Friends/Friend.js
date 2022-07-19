@@ -1,5 +1,5 @@
 import React from 'react';
-import userPhoto from "../../../img/1_1WCjO1iYMo7J7Upp8KMfLA@2x.jpeg";
+import userPhoto from "../../../../IMG/1_1WCjO1iYMo7J7Upp8KMfLA@2x.jpeg";
 import classes from "./Friends.module.css";
 import {NavLink} from "react-router-dom";
 import Preloader from "../../Preloader";

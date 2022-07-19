@@ -1,12 +1,15 @@
 import {connect} from "react-redux";
-import {InfoProfileThunk} from "../../../Redux/ProfileReducer";
+import {InfoProfileThunk} from "../../../../Redux/ProfileReducer";
 import ProfileAPI from "./ProfileAPI";
+import {compose} from "redux";
+import withAuthRedirect from "../../../../HOC/withAuthRedirect";
 
 let mapStateToProps = (state) =>{
     return {
         profile: state.ProfilePage.profile,
         id: state.Auth.userID,
-        isFetching: state.UsersPage.isFetching
+        isFetching: state.UsersPage.isFetching,
+        isAuth: state.Auth.isAuth
     }
 }
 
@@ -18,4 +21,7 @@ let mapDispatchToProps = (dispatch) =>{
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileAPI);
+export default compose(
+    connect(mapStateToProps,mapDispatchToProps),
+    withAuthRedirect,
+)(ProfileAPI)

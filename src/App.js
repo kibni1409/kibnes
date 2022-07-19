@@ -1,5 +1,5 @@
 import classes from './App.module.css';
-import Body from "./Body/Body.js";
+import Body from "./Component/Body/Body.js";
 import Footer from "./Component/Footer/Footer";
 import {BrowserRouter} from "react-router-dom";
 import React  from 'react';

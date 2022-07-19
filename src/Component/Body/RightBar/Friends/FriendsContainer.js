@@ -8,7 +8,7 @@ import {
     setFriendsThunk,
     FollowFriendThunk,
     unFollowFriendThunk
-} from "../../../Redux/FriendsReducer";
+} from "../../../../Redux/FriendsReducer";
 import FriendsAPI from "./FriendsAPI";
 
 

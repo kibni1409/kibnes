@@ -4,7 +4,7 @@ const SET_USER_DATA = "SET_USER_DATA";
 
 let initialState = {
     login: null,
-    userID: 24858,
+    userID: null,
     email: null,
     isAuth: false
 }
@@ -36,7 +36,9 @@ export const SetUserDataAC = (userID, login, email) => {
 export const AuthMeThunk = () => {
     return dispatch => {
         usersAPI.AuthMe().then(data => {
-            dispatch(SetUserDataAC(data.data.id, data.data.login, data.data.email));
+                if (data.resultCode === 0) {
+                    dispatch(SetUserDataAC(data.data.id, data.data.login, data.data.email));
+                }
             }
         );
     }

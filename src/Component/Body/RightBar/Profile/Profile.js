@@ -2,7 +2,7 @@ import classes from './Profile.module.css';
 import React  from 'react';
 import AreaPostContainer from "./Posts/AreaPost/AreaPostContainer";
 import PostContainer from "./Posts/PostContainer";
-import ava from "../../../img/1_1WCjO1iYMo7J7Upp8KMfLA@2x.jpeg"
+import ava from "../../../../IMG/1_1WCjO1iYMo7J7Upp8KMfLA@2x.jpeg"
 
 let Profile = (props) => {
 

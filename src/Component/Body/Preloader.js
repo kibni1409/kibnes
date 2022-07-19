@@ -1,5 +1,5 @@
 import React from "react";
-import preloader from "../img/XOsX.gif";
+import preloader from "../../IMG/XOsX.gif";
 
 let Preloader = () => {
     return (
