@@ -35,6 +35,9 @@ export const usersAPI = {
             resronse => resronse.data
         )
     },
+}
+
+export const profileAPI = {
     AuthMe () {
         return instance.get(`auth/me`).then(
             resronse => resronse.data
@@ -45,5 +48,13 @@ export const usersAPI = {
         return instance.get(`profile/${userID}`).then(
             resronse => resronse.data
         )
+    },
+    getStatusProfile(userID){
+        return instance.get(`profile/status/${userID}`)
+    },
+    setStatusProfile(status){
+        return instance.put(`profile/status`,{
+            status: status
+        })
     }
 }

@@ -1,4 +1,4 @@
-import {usersAPI} from "../DAL/API";
+import {profileAPI, usersAPI} from "../DAL/API";
 
 const SET_USER_DATA = "SET_USER_DATA";
 
@@ -35,7 +35,7 @@ export const SetUserDataAC = (userID, login, email) => {
 
 export const AuthMeThunk = () => {
     return dispatch => {
-        usersAPI.AuthMe().then(data => {
+        profileAPI.AuthMe().then(data => {
                 if (data.resultCode === 0) {
                     dispatch(SetUserDataAC(data.data.id, data.data.login, data.data.email));
                 }

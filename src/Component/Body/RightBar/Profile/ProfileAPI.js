@@ -4,15 +4,18 @@ import {useParams} from "react-router-dom";
 import {useEffect} from "react";
 import Profile from "./Profile";
 
+
 let ProfileAPI = (props) => {
     let {userID} = useParams();
 
     useEffect(() => {
-        if(userID === undefined){
+        if(userID === "my"){
             props.InfoProfileThunk(props.id);
+            props.getStatusProfileThunk(props.id);
         }
         else {
             props.InfoProfileThunk(userID);
+            props.getStatusProfileThunk(userID);
         }
     },[userID]);
 
