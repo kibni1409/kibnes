@@ -1,4 +1,3 @@
-import React from "react";
 import {AddPostAction, ChangeTextPostAction} from "../../../../../../Redux/ProfileReducer";
 import AreaPost from "./AreaPost";
 import {connect} from "react-redux";

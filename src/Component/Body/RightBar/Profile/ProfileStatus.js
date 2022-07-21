@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 
 class ProfileStatus extends React.Component {
 
@@ -6,6 +6,14 @@ class ProfileStatus extends React.Component {
     state = {
         editMode: false,
         status: this.props.status
+    }
+
+    componentDidUpdate(prevProps,prevState){
+        console.log("2")
+        if(prevProps.status !== this.props.status)
+        this.setState({
+            status: this.props.status
+        });
     }
 
     ActivateEditMode = () => {
@@ -22,6 +30,7 @@ class ProfileStatus extends React.Component {
         this.props.setStatus(this.state.status)
     }
     onStatusChange = (e) => {
+        console.log("1")
         this.setState({
             status: e.currentTarget.value
         })

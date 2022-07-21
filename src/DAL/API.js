@@ -44,6 +44,16 @@ export const profileAPI = {
         )
 
     },
+    Login (email, password, rememberMe) {
+        return instance.post(`auth/login`, {email, password, rememberMe}).then(
+            resronse => resronse.data
+        )
+    },
+    Logout () {
+        return instance.delete(`auth/login`).then(
+            resronse => resronse.data
+        )
+    },
     InfoProfile(userID){
         return instance.get(`profile/${userID}`).then(
             resronse => resronse.data

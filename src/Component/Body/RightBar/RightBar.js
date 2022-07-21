@@ -5,6 +5,7 @@ import UsersContainer from "./Users/UsersContainer";
 import ProfileContainer from "./Profile/ProfileContainer";
 import FriendsContainer from "./Friends/FriendsContainer";
 import MessagesContainer from "./Messages/MessagesContainer";
+import Login from "./Login/LoginContainer";
 
 
 const RightBar = () => {
@@ -19,7 +20,7 @@ const RightBar = () => {
                 <Route path="messages/*" element={<MessagesContainer/>}/>
                 <Route path="users" element={<UsersContainer/>}/>
                 <Route path="friends" element={<FriendsContainer/>}/>
-                <Route path="login" element={<h1>Login</h1>}/>
+                <Route path="login" element={<Login/>}/>
                 <Route path="*" element={<h1>404</h1>}/>
             </Routes>
         </div>

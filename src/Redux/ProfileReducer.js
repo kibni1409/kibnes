@@ -1,4 +1,4 @@
-import {profileAPI, usersAPI as userAPI} from "../DAL/API";
+import {profileAPI} from "../DAL/API";
 
 let ADD_POST = "ADD_POST";
 let CHANGE_TEXT_POST = "CHANGE_TEXT_POST";

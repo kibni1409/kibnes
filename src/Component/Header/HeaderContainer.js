@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import Header from "./Header";
 import {connect} from "react-redux";
-import {AuthMeThunk} from "../../Redux/AuthReducer";
+import {AuthMeThunk, LogoutThunk} from "../../Redux/AuthReducer";
 import {useParams} from "react-router-dom";
 
 
@@ -27,6 +27,9 @@ let mapDispatchToProps = (dispatch) =>{
     return {
         AuthMeThunk: () => {
             dispatch(AuthMeThunk())
+        },
+        logout:() => {
+            dispatch(LogoutThunk());
         }
     }
 }

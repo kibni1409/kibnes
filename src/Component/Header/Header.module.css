@@ -2,4 +2,9 @@
     text-align: center;
     background-color: #F73859;
     padding: 10px;
+    float: right;
+}
+
+.login{
+    float: right;
 }
