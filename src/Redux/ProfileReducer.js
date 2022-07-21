@@ -1,7 +1,6 @@
 import {profileAPI} from "../DAL/API";
 
 let ADD_POST = "ADD_POST";
-let CHANGE_TEXT_POST = "CHANGE_TEXT_POST";
 let SET_PROFILE = "SET_PROFILE";
 let SET_STATUS = "SET_STATUS";
 let IS_FEATCHING_PROFILE = "IS_FEATCHING_PROFILE";
@@ -12,7 +11,6 @@ let initialState = {
         {id: 1, text: 'Hello milk'},
         {id: 2, text: 'Hello friends'}
     ],
-    NewTextPost: 'ww',
     profile: null,
     status: "",
     isFetching: false,
@@ -22,17 +20,9 @@ let ProfileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST: {
             let sizePosts = state.posts.length;
-            let textPost = state.NewTextPost;
             return {
                 ...state,
-                posts: [...state.posts, {id: sizePosts, text: textPost}],
-                NewTextPost: ''
-            }
-        }
-        case CHANGE_TEXT_POST: {
-            return {
-                ...state,
-                NewTextPost: action.text
+                posts: [...state.posts, {id: sizePosts, text: action.text}],
             }
         }
         case SET_PROFILE: {
@@ -58,14 +48,9 @@ let ProfileReducer = (state = initialState, action) => {
     }
 }
 
-export const AddPostAction = () => {
+export const AddPostAction = (text) => {
     return {
-        type: "ADD_POST"
-    }
-}
-export const ChangeTextPostAction = (text) => {
-    return {
-        type: "CHANGE_TEXT_POST",
+        type: "ADD_POST",
         text: text
     }
 }

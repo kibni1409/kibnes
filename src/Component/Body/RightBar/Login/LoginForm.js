@@ -11,9 +11,6 @@ let LoginForm = (props) => {
     } = useForm();
 
     const onSubmit = (data) => {
-        console.log(data);
-        props.login(data.email, data.password, data.rememberMe);
-        console.log(data.email, data.password, data.rememberMe);
         reset();
     };
     return (

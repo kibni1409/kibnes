@@ -9,7 +9,6 @@ class ProfileStatus extends React.Component {
     }
 
     componentDidUpdate(prevProps,prevState){
-        console.log("2")
         if(prevProps.status !== this.props.status)
         this.setState({
             status: this.props.status
@@ -30,7 +29,6 @@ class ProfileStatus extends React.Component {
         this.props.setStatus(this.state.status)
     }
     onStatusChange = (e) => {
-        console.log("1")
         this.setState({
             status: e.currentTarget.value
         })

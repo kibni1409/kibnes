@@ -1,4 +1,4 @@
-import {AddPostAction, ChangeTextPostAction} from "../../../../../../Redux/ProfileReducer";
+import {AddPostAction} from "../../../../../../Redux/ProfileReducer";
 import AreaPost from "./AreaPost";
 import {connect} from "react-redux";
 
@@ -11,10 +11,6 @@ let mapStateToProps = (state) =>{
 
 let mapDispatchToProps = (dispatch) => {
     return {
-        ChangeTextPost: (text) => {
-            let action = ChangeTextPostAction(text);
-           dispatch(action);
-        },
         AddPost: (text) => {
             let action = AddPostAction(text);
             dispatch(action);

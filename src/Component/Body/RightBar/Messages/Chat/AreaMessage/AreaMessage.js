@@ -1,32 +1,37 @@
 import classes from './AreaMessage.module.css';
 import React from "react";
+import { useForm } from "react-hook-form";
 
 const AreaMessage = (props) => {
 
-    let MessageElement = React.createRef ();
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors }
+    } = useForm();
 
-    let onMessageText = () => {
-        let text = MessageElement.current.value;
-        props.MessageText(text);
-    }
-
-    let onTextMessageChange = () => {
-        let text = MessageElement.current.value;
-        props.TextMessageChange(text);
-    }
+    const onSubmit = (data) => {
+        props.MessageText(data.message);
+        reset();
+    };
 
     return (
         <div className={classes.area_message}>
-                <textarea className={classes.textarea}
-                    id="textMessage"
-                    ref={MessageElement}
-                    onChange={onTextMessageChange}
-                    value={props.TextMessage}
-                />
+            <form onSubmit={handleSubmit(onSubmit)} >
+                <div className={classes.textareaDiv}>
+                    <textarea className={classes.textarea}
+                              placeholder="Text a new message"
+                        {...register("message")}
 
-                <button onClick={onMessageText} className={classes.button}>
-                    Send message
-                </button>
+                    />
+                </div>
+                <div className={classes.buttonDiv}>
+                    <button type={"submit"} className={classes.button}>
+                        Send message
+                    </button>
+                </div>
+            </form>
         </div>
     );
 }
