@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 
 let mapStateToProps = (state) =>{
     return {
-        TextPost: state.ProfilePage.NewTextPost
+
     }
 }
 

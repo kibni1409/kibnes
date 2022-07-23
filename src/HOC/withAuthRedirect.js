@@ -1,10 +1,12 @@
 import React from "react";
 import {Navigate} from "react-router-dom";
 import {connect} from "react-redux";
+import {getIsAuth} from "../Redux/Selectors";
 
 let mapStateToProps = (state) => {
+    debugger;
     return {
-        isAuth: state.Auth.isAuth
+        isAuth: getIsAuth(state)
     }
 }
 

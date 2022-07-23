@@ -9,18 +9,26 @@ import {
     unFollowFriendThunk
 } from "../../../../Redux/FriendsReducer";
 import FriendsAPI from "./FriendsAPI";
+import {
+    getFriends,
+    getIsFetching,
+    getPageCountFriends,
+    getSizePageFriends,
+    getTotalCountFriends,
+    getTotalPageFriends
+} from "../../../../Redux/Selectors";
 
 
 let mapStateToProps = (state) => {
    return {
-       friends: state.FriendsPage.friends,
-       totalCount: state.FriendsPage.totalCount,
-       pageCount: state.FriendsPage.pageCount,
-       sizePage: state.FriendsPage.sizePage,
-       isFetching: state.FriendsPage.isFetching,
-       totalPages: state.FriendsPage.totalPages,
-       countDoteStart: state.FriendsPage.countDoteStart,
-       countDoteEnd: state.FriendsPage.countDoteEnd
+       friends: getFriends(state),
+       totalCount: getTotalCountFriends(state),
+       pageCount: getPageCountFriends(state),
+       sizePage: getSizePageFriends(state),
+       isFetching: getIsFetching(state),
+       totalPages: getTotalPageFriends(state),
+       countDoteStart: state.FriendsPage.countDoteStart, //TODO add local State
+       countDoteEnd: state.FriendsPage.countDoteEnd //and this
    }
 }
 

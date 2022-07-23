@@ -2,20 +2,46 @@ import classes from './App.module.css';
 import Body from "./Component/Body/Body.js";
 import Footer from "./Component/Footer/Footer";
 import {BrowserRouter} from "react-router-dom";
-import React  from 'react';
+import React from 'react';
 import HeaderContainer from "./Component/Header/HeaderContainer";
+import {compose} from "redux";
+import {connect} from "react-redux";
+import {AuthMeThunk} from "./Redux/AuthReducer";
 
-const App = () => {
-    return (
-        <BrowserRouter>
-            <div className={classes.app_wrapper}>
-                <HeaderContainer/>
-                <Body/>
-                <Footer/>
-            </div>
-        </BrowserRouter>
-    );
+class App extends React.Component {
+
+    componentDidMount() {
+        debugger;
+        this.props.AuthMeThunk()
+    }
+
+    render() {
+        return (
+            <BrowserRouter>
+                <div className={classes.app_wrapper}>
+                    <HeaderContainer/>
+                    <Body/>
+                    <Footer/>
+                </div>
+            </BrowserRouter>
+        );
+    }
 }
 
+let mapStateToProps = (state) => {
+    return {
 
-export default App;
+    }
+}
+
+let mapDispatchToProps = (dispatch) => {
+    return {
+        AuthMeThunk: () => {
+            dispatch(AuthMeThunk())
+        },
+    }
+}
+
+export default compose(
+    connect(mapStateToProps,mapDispatchToProps),
+)(App);

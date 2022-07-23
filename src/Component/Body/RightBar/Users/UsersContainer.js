@@ -10,19 +10,25 @@ import {
 } from "../../../../Redux/UsersReducer";
 import UsersAPI from "./UsersAPI";
 import {compose} from "redux";
-import withAuthRedirect from "../../../../HOC/withAuthRedirect";
+import {
+    getIsAuth, getIsFetching,
+    getPageCountUsers,
+    getSizePageUsers,
+    getTotalCountUsers, getTotalPages,
+    getUsers
+} from "../../../../Redux/Selectors";
 
 let mapStateToProps = (state) => {
    return {
-       users: state.UsersPage.users,
-       totalCount: state.UsersPage.totalCount,
-       pageCount: state.UsersPage.pageCount,
-       sizePage: state.UsersPage.sizePage,
-       isFetching: state.UsersPage.isFetching,
-       totalPages: state.UsersPage.totalPages,
-       countDoteStart: state.UsersPage.countDoteStart,
-       countDoteEnd: state.UsersPage.countDoteEnd,
-       isAuth: state.Auth.isAuth
+       users: getUsers(state),
+       totalCount: getTotalCountUsers(state),
+       pageCount: getPageCountUsers(state),
+       sizePage: getSizePageUsers(state),
+       isFetching: getIsFetching(state),
+       totalPages: getTotalPages(state),
+       countDoteStart: state.UsersPage.countDoteStart, //TODO local state
+       countDoteEnd: state.UsersPage.countDoteEnd, // and this
+       isAuth: getIsAuth(state)
    }
 }
 
@@ -58,6 +64,5 @@ let mapDispatchToProps = (dispatch) => {
 
 export default compose(
     connect(mapStateToProps,mapDispatchToProps),
-    withAuthRedirect,
 )(UsersAPI)
 

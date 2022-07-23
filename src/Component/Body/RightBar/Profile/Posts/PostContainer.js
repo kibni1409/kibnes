@@ -1,10 +1,11 @@
 import {connect} from "react-redux";
 import Posts from "./Posts";
+import {getPosts} from "../../../../../Redux/Selectors";
 
 
 let mapStateToProps = (state) =>{
     return {
-        Posts: state.ProfilePage.posts
+        Posts: getPosts(state)
     }
 }
 

@@ -1,14 +1,16 @@
 import {connect} from "react-redux";
 import Chat from "./Chat";
+import {getMessage} from "../../../../../Redux/Selectors";
 
 let mapStateToProps = (state) =>{
     return {
-        Message_elements: state.MessagePage.messages
+        Message_elements: getMessage(state)
     }
 }
 
 let mapDispatchToProps = (dispatch) => {
     return {
+
     }
 }
 

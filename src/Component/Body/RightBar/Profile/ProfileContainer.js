@@ -3,14 +3,15 @@ import {getStatusProfileThunk, InfoProfileThunk, setStatusProfileThunk} from "..
 import ProfileAPI from "./ProfileAPI";
 import {compose} from "redux";
 import withAuthRedirect from "../../../../HOC/withAuthRedirect";
+import {getIsAuth, getIsFetching, getProfile, getStatus, getUserId} from "../../../../Redux/Selectors";
 
 let mapStateToProps = (state) =>{
     return {
-        profile: state.ProfilePage.profile,
-        id: state.Auth.userID,
-        isFetching: state.UsersPage.isFetching,
-        isAuth: state.Auth.isAuth,
-        status: state.ProfilePage.status
+        profile: getProfile(state),
+        id: getUserId(state),
+        isFetching: getIsFetching(state),
+        isAuth: getIsAuth(state),
+        status: getStatus(state)
     }
 }
 
