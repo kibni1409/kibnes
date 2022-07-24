@@ -12,10 +12,10 @@ const LeftBar = () => {
                     <NavLink to="/messages">Messages</NavLink>
                 </div>
                 <div className={classes.item}>
-                    <NavLink to="/users">Users</NavLink>
+                    <NavLink to="/users/all">Users</NavLink>
                 </div>
                 <div className={classes.item}>
-                    <NavLink to="/friends">Friends</NavLink>
+                    <NavLink to="/users/friends">Friends</NavLink>
                 </div>
 
             </div>

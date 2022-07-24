@@ -4,7 +4,6 @@ import {connect} from "react-redux";
 import {getIsAuth} from "../Redux/Selectors";
 
 let mapStateToProps = (state) => {
-    debugger;
     return {
         isAuth: getIsAuth(state)
     }

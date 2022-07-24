@@ -191,4 +191,17 @@ export const unFollowUserThunk = (userID) => {
     }
 }
 
+export const setFriendsThunk = (pageCount, sizePage) => {
+    return dispatch =>{
+        dispatch(IsFeatchingF(true));
+
+        usersAPI.GetFriends(pageCount, sizePage).then(data => {
+            dispatch(IsFeatchingF(false));
+            dispatch(setUsers(data.items));
+            dispatch(setPageCount(pageCount));
+            dispatch(setTotalCount(data.totalCount));
+        })
+    }
+}
+
 export default UsersReducer;

@@ -11,7 +11,6 @@ import {AuthMeThunk} from "./Redux/AuthReducer";
 class App extends React.Component {
 
     componentDidMount() {
-        debugger;
         this.props.AuthMeThunk()
     }
 

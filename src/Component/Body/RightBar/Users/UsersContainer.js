@@ -7,6 +7,7 @@ import {
     setUsersThunk,
     unFollowUserThunk,
     FollowUserThunk,
+    setFriendsThunk
 } from "../../../../Redux/UsersReducer";
 import UsersAPI from "./UsersAPI";
 import {compose} from "redux";
@@ -19,6 +20,8 @@ import {
 } from "../../../../Redux/Selectors";
 
 let mapStateToProps = (state) => {
+
+
    return {
        users: getUsers(state),
        totalCount: getTotalCountUsers(state),
@@ -28,7 +31,7 @@ let mapStateToProps = (state) => {
        totalPages: getTotalPages(state),
        countDoteStart: state.UsersPage.countDoteStart, //TODO local state
        countDoteEnd: state.UsersPage.countDoteEnd, // and this
-       isAuth: getIsAuth(state)
+       isAuth: getIsAuth(state),
    }
 }
 
@@ -52,6 +55,9 @@ let mapDispatchToProps = (dispatch) => {
         },
         setUsersThunk: (pageCount, sizePage) => {
             dispatch(setUsersThunk(pageCount, sizePage))
+        },
+        setFriendsThunk: (pageCount, sizePage) => {
+            dispatch(setFriendsThunk(pageCount, sizePage))
         },
         FollowUserThunk: (user) => {
           dispatch(FollowUserThunk(user));
