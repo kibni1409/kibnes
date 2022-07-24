@@ -2,7 +2,6 @@ import {AddPostAction} from "../../../../../../Redux/ProfileReducer";
 import AreaPost from "./AreaPost";
 import {connect} from "react-redux";
 
-
 let mapStateToProps = (state) =>{
     return {
 

@@ -2,12 +2,6 @@ import {connect} from "react-redux";
 import AreaMessage from "./AreaMessage";
 import {AddMessageAction} from "../../../../../../Redux/MessageReducer";
 
-let mapStateToProps = (state) =>{
-    return {
-
-    }
-}
-
 let mapDispatchToProps = (dispatch) => {
     return {
         MessageText: (text) => {
@@ -18,6 +12,6 @@ let mapDispatchToProps = (dispatch) => {
 }
 
 
-let AreaMessageContainer = connect(mapStateToProps,mapDispatchToProps)(AreaMessage);
+let AreaMessageContainer = connect(null,mapDispatchToProps)(AreaMessage);
 
 export default AreaMessageContainer;

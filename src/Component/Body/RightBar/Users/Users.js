@@ -5,7 +5,7 @@ import {NavLink} from "react-router-dom";
 import Preloader from "../../Preloader";
 import Pagination from "../Pagination";
 
-let Users = (props) => {
+const Users = (props) => {
     return (
         <>
             {props.isFetching ? <Preloader/> : null}

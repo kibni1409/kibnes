@@ -6,7 +6,7 @@ import ava from "../../../../IMG/1_1WCjO1iYMo7J7Upp8KMfLA@2x.jpeg"
 import ProfileStatus from "./ProfileStatus";
 import {useParams} from "react-router-dom";
 
-let Profile = (props) => {
+const Profile = (props) => {
 
     let {userID} = useParams();
 

@@ -14,7 +14,6 @@ const Chat = (props) => {
         <div className={classes.chat}>
             Chat
             {MessagesElement}
-
         </div>
     )
 }

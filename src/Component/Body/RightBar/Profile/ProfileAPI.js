@@ -4,8 +4,8 @@ import {useParams} from "react-router-dom";
 import {useEffect} from "react";
 import Profile from "./Profile";
 
+const ProfileAPI = (props) => {
 
-let ProfileAPI = (props) => {
     let {userID} = useParams();
 
     useEffect(() => {

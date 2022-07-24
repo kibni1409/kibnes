@@ -8,16 +8,9 @@ let mapStateToProps = (state) => {
     return {
         isAuth: getIsAuth(state)
     }
-
-}
-
-let mapDispatchToProps = (dispatch) => {
-    return {
-
-    }
 }
 
 export default compose(
-    connect(mapStateToProps,mapDispatchToProps),
+    connect(mapStateToProps,null),
     withAuthRedirect,
 )(Messages)

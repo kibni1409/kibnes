@@ -8,13 +8,7 @@ let mapStateToProps = (state) =>{
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-
-    }
-}
-
-let ChatContainer = connect(mapStateToProps,mapDispatchToProps)(Chat);
+let ChatContainer = connect(mapStateToProps,null)(Chat);
 
 
 export default ChatContainer;
