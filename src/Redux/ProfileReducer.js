@@ -1,9 +1,9 @@
 import {profileAPI} from "../DAL/API";
 
-let ADD_POST = "ADD_POST";
-let SET_PROFILE = "SET_PROFILE";
-let SET_STATUS = "SET_STATUS";
-let IS_FEATCHING_PROFILE = "IS_FEATCHING_PROFILE";
+const ADD_POST = "profile/ADD_POST";
+const SET_PROFILE = "profile/SET_PROFILE";
+const SET_STATUS = "profile/SET_STATUS";
+const IS_FEATCHING_PROFILE = "profile/IS_FEATCHING_PROFILE";
 
 let initialState = {
     posts: [
@@ -16,7 +16,7 @@ let initialState = {
     isFetching: false,
 }
 
-let ProfileReducer = (state = initialState, action) => {
+const ProfileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST: {
             let sizePosts = state.posts.length;
@@ -50,57 +50,54 @@ let ProfileReducer = (state = initialState, action) => {
 
 export const AddPostAction = (text) => {
     return {
-        type: "ADD_POST",
+        type: "profile/ADD_POST",
         text: text
     }
 }
 export const ProfileAction = (profile) => {
     return {
-        type: "SET_PROFILE",
+        type: "profile/SET_PROFILE",
         profile
     }
 }
 export const StatusAction = (status) => {
     return {
-        type: "SET_STATUS",
+        type: "profile/SET_STATUS",
         status: status
     }
 }
 export const IsFeatchingF = (bool) => {
     return {
-        type: "IS_FEATCHING_PROFILE",
+        type: "profile/IS_FEATCHING_PROFILE",
         isFetching: bool
     }
 }
 
 export const InfoProfileThunk = (userID) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(IsFeatchingF(true));
-        profileAPI.InfoProfile(userID).then(data => {
-            dispatch(ProfileAction(data));
-            dispatch(IsFeatchingF(false));
-        })
+        let response = await profileAPI.InfoProfile(userID)
+        dispatch(ProfileAction(response));
+        dispatch(IsFeatchingF(false));
+
     }
 }
 export const getStatusProfileThunk = (userID) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(IsFeatchingF(true));
-        profileAPI.getStatusProfile(userID).then(data => {
-            dispatch(StatusAction(data.data));
-            dispatch(IsFeatchingF(false));
-        })
+        let response = await profileAPI.getStatusProfile(userID)
+        dispatch(StatusAction(response.data));
+        dispatch(IsFeatchingF(false));
     }
 }
 export const setStatusProfileThunk = (status) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(IsFeatchingF(true));
-        profileAPI.setStatusProfile(status).then(data => {
-
-            if(data.data.resultCode === 0){
-                dispatch(StatusAction(status));
-                dispatch(IsFeatchingF(false));
-            }
-        })
+        let response = await profileAPI.setStatusProfile(status)
+        if (response.data.resultCode === 0) {
+            dispatch(StatusAction(status));
+            dispatch(IsFeatchingF(false));
+        }
     }
 }
 

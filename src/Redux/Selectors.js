@@ -16,21 +16,6 @@ export const getIsFetching = (state) => {
 export const getStatus = (state) => {
     return state.ProfilePage.status
 }
-export const getFriends = (state) => {
-    return state.FriendsPage.friends
-}
-export const getTotalCountFriends = (state) => {
-    return state.FriendsPage.totalCount
-}
-export const getPageCountFriends = (state) => {
-    return state.FriendsPage.pageCount
-}
-export const getSizePageFriends = (state) => {
-    return state.FriendsPage.sizePage
-}
-export const getTotalPageFriends = (state) => {
-    return state.FriendsPage.totalPages
-}
 export const getDialogs = (state) => {
     return state.MessagePage.dialogs
 }

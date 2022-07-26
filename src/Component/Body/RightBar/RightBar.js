@@ -16,7 +16,9 @@ const RightBar = () => {
                 <Route path="profile/" element={<ProfileContainer />}>
                     <Route path=":userID" element={<ProfileContainer />}/>
                 </Route>
-                <Route path="messages/*" element={<MessagesContainer/>}/>
+                <Route path="messages/*" element={<MessagesContainer/>}>
+                    <Route path=":dialogID" element={<MessagesContainer/>}/>
+                </Route>
                 <Route path="users/" element={<UsersContainer />}>
                     <Route path=":UsersType" element={<UsersContainer />}/>
                 </Route>

@@ -9,6 +9,7 @@ const ProfileAPI = (props) => {
     let {userID} = useParams();
 
     useEffect(() => {
+
         if(userID === "my"){
             props.InfoProfileThunk(props.id);
             props.getStatusProfileThunk(props.id);
@@ -17,7 +18,7 @@ const ProfileAPI = (props) => {
             props.InfoProfileThunk(userID);
             props.getStatusProfileThunk(userID);
         }
-    },[userID]);
+    },[props.id]);
 
     if(!props.profile){
         return <Preloader />

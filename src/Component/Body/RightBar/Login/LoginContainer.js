@@ -3,11 +3,12 @@ import LoginForm from "./LoginForm";
 import {compose} from "redux";
 import {connect} from "react-redux";
 import {LoginThunk} from "../../../../Redux/AuthReducer";
-import {getError} from "../../../../Redux/Selectors";
+import {getError, getIsAuth} from "../../../../Redux/Selectors";
 
 let mapStateToProps = (state) =>{
     return {
-        error: getError(state)
+        error: getError(state),
+        isAuth: getIsAuth(state)
     }
 }
 let mapDispatchToProps = (dispatch) =>{

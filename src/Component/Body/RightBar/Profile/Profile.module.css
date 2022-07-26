@@ -4,13 +4,14 @@
     background-color: #50bbce;
     padding: 10px;
     margin: 10px;
+    height: 90vh;
     box-shadow: 0.4em 0.4em 10px rgba(19, 17, 17, 0.5);
 }
 
 .profile img{
-    border-radius: 50px;
-    width: 80px;
-    height: 80px;
+    border-radius: 1000px;
+    width: 250px;
+    height: 250px;
     box-shadow: 0.4em 0.4em 10px rgba(19, 17, 17, 0.5);
 }
 

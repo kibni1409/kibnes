@@ -27,12 +27,6 @@ class App extends React.Component {
     }
 }
 
-let mapStateToProps = (state) => {
-    return {
-
-    }
-}
-
 let mapDispatchToProps = (dispatch) => {
     return {
         AuthMeThunk: () => {
@@ -42,5 +36,5 @@ let mapDispatchToProps = (dispatch) => {
 }
 
 export default compose(
-    connect(mapStateToProps,mapDispatchToProps),
+    connect(null,mapDispatchToProps),
 )(App);

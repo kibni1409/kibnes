@@ -4,7 +4,8 @@
     border-radius: 40px;
     margin: 0  20px 0 0 ;
     position: relative;
-    height: 100%;
+
+    display: inline-block;
     box-shadow: 0.4em 0.4em 10px rgba(19, 17, 17, 0.5);
 
     grid-area: d;

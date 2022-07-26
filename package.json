@@ -2,6 +2,7 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://kibni1409.github.io/kibnes/",
   "dependencies": {
     "@hookform/error-message": "^2.0.0",
     "@reduxjs/toolkit": "^1.8.3",
@@ -16,7 +17,7 @@
     "react-hook-form": "^7.33.1",
     "react-redux": "^8.0.2",
     "react-router-dom": "^6.3.0",
-    "react-scripts": "^2.1.3",
+    "react-scripts": "^5.0.1",
     "redux": "^4.2.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.1",
@@ -27,7 +28,9 @@
     "start": "react-scripts  start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -50,5 +53,9 @@
   "main": "index.js",
   "repository": "https://github.com/kibni1409/kibnes.git",
   "author": "kibni <kibni1409@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.0.0",
+    "gh-pages": "^4.0.0"
+  }
 }

@@ -1,7 +1,8 @@
 import {profileAPI} from "../DAL/API";
+import {Navigate} from "react-router-dom";
 
-const SET_USER_DATA = "SET_USER_DATA";
-const SET_ERROR = "SET_ERROR";
+const SET_USER_DATA = "auth/SET_USER_DATA";
+const SET_ERROR = "auth/SET_ERROR";
 
 let initialState = {
     login: null,
@@ -35,49 +36,42 @@ let AutchReducer = (state = initialState, action) => {
 
 export const SetUserDataAC = (userID, login, email, isAuth) => {
     return {
-        type: "SET_USER_DATA",
+        type: "auth/SET_USER_DATA",
         action: {userID, login, email, isAuth}
     }
 }
 export const ErrorAC = (message) => {
     return {
-        type: "SET_ERROR",
+        type: "auth/SET_ERROR",
         message: message
     }
 }
 
 export const AuthMeThunk = () => {
-    return dispatch => {
-        profileAPI.AuthMe().then(data => {
-                if (data.resultCode === 0) {
-                    dispatch(SetUserDataAC(data.data.id, data.data.login, data.data.email, true));
-                }
-            }
-        );
+    return async dispatch => {
+        let response = await profileAPI.AuthMe()
+        if (response.resultCode === 0) {
+            dispatch(SetUserDataAC(response.data.id, response.data.login, response.data.email, true));
+        }
     }
 }
 export const LoginThunk = (email, password, rememberMe) => {
-    return dispatch => {
-        profileAPI.Login(email, password, rememberMe).then(data => {
-                if (data.resultCode === 0) {
-                    dispatch(SetUserDataAC(data.data.id, data.data.login, data.data.email, true));
-                }
-                else{
-                    dispatch(ErrorAC(data.messages))
-                }
-            }
-        );
+    return async dispatch => {
+        let response = await profileAPI.Login(email, password, rememberMe)
+        if (response.resultCode === 0) {
+            dispatch(SetUserDataAC(response.data.id, response.data.login, response.data.email, true));
+
+        } else {
+            dispatch(ErrorAC(response.messages))
+        }
     }
 }
 export const LogoutThunk = () => {
-    return dispatch => {
-        profileAPI.Logout().then(data => {
-                if (data.resultCode === 0) {
-                    dispatch(SetUserDataAC(null, null, null, false));
-                }
-
-            }
-        );
+    return async dispatch => {
+        let response = await profileAPI.Logout()
+        if (response.resultCode === 0) {
+            dispatch(SetUserDataAC(null, null, null, false));
+        }
     }
 }
 

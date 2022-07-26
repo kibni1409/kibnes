@@ -12,13 +12,13 @@ const Profile = (props) => {
 
     return (
         <div className={classes.profile}>
-            <img src={props.profile.photos.small === null ? ava : props.profile.photos.small } alt="ava"/>
+            <img src={props.profile.photos.large === null ? ava : props.profile.photos.large } alt="ava"/>
             <div className={classes.info}>
                ID={props.profile.userId} FullName={props.profile.fullName}
             </div>
             <ProfileStatus status={props.status} setStatus={props.setStatusProfileThunk} userID={userID}/>
             <PostContainer />
-            <AreaPostContainer/>
+            {userID === "my" ? <AreaPostContainer/> : null} 
         </div>
     );
 }

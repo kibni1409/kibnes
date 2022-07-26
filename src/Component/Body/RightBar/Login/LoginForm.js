@@ -1,7 +1,19 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useForm } from "react-hook-form";
+import {useLocation, useNavigate} from "react-router-dom";
 
 const LoginForm = (props) => {
+
+    let navigate = useNavigate();
+    let location = useLocation();
+    let state = location.state;
+    let from = state ? state.from.pathname : '/profile/my';
+    if (from === "/") from = "/profile/my";
+
+    useEffect(() =>{
+        if(props.isAuth === true) return navigate(from, { replace: true });
+    },[props.isAuth])
+
 
     const {
         register,
@@ -11,6 +23,7 @@ const LoginForm = (props) => {
     } = useForm();
 
     const onSubmit = (data) => {
+        props.login(data.email, data.password, data.rememberMe)
         reset();
     };
     return (

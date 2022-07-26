@@ -1,4 +1,4 @@
-let SEND_MESSAGE = "SEND_MESSAGE";
+let SEND_MESSAGE = "message/SEND_MESSAGE";
 
 let initialState = {
         dialogs: [
@@ -33,7 +33,7 @@ let MessageReducer = (state = initialState, action) => {
 
 export const AddMessageAction = (text) =>{
     return {
-        type: "SEND_MESSAGE",
+        type: "message/SEND_MESSAGE",
         text: text
     }
 }

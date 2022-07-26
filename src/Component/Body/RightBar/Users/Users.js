@@ -9,7 +9,7 @@ const Users = (props) => {
     return (
         <>
             {props.isFetching ? <Preloader/> : null}
-            <Pagination {...props}/>
+            <Pagination {...props}/> {/* TODO add user.js*/}
             {
                 props.users.map(user => props.isFetching ? null : <div className={classes.user} key={user.id}>
                         <NavLink to={'/profile/' + user.id}>

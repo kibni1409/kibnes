@@ -3,6 +3,7 @@
     background-color: #384259;
     padding: 10px;
     height: 100vh;
+    margin: 0 10%;
 
     display: grid;
     grid-template-rows: 100%;

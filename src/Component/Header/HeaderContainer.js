@@ -11,7 +11,7 @@ const HeaderContainer = (props) =>{
 
     useEffect(() => {
         props.AuthMeThunk()
-    },userID);
+    }, [props.userID]);
 
     return (<Header {...props} />)
 }
