@@ -3,6 +3,7 @@
     background-color: #F73859;
     padding: 10px;
     float: right;
+    grid-area: h;
 }
 
 .login{

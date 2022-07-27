@@ -1,5 +1,4 @@
 import classes from './App.module.css';
-import Body from "./Component/Body/Body.js";
 import Footer from "./Component/Footer/Footer";
 import {BrowserRouter} from "react-router-dom";
 import React from 'react';
@@ -7,7 +6,8 @@ import HeaderContainer from "./Component/Header/HeaderContainer";
 import {compose} from "redux";
 import {connect} from "react-redux";
 import {AuthMeThunk} from "./Redux/AuthReducer";
-
+import LeftBar from "./Component/LeftBar/LeftBar";
+import RightBar from "./Component/RightBar/RightBar";
 class App extends React.Component {
 
     componentDidMount() {
@@ -19,7 +19,8 @@ class App extends React.Component {
             <BrowserRouter>
                 <div className={classes.app_wrapper}>
                     <HeaderContainer/>
-                    <Body/>
+                    <LeftBar/>
+                    <RightBar/>
                     <Footer/>
                 </div>
             </BrowserRouter>

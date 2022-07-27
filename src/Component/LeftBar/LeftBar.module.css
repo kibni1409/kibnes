@@ -1,0 +1,30 @@
+.leftbar_wrapper {
+    text-align: center;
+    grid-area: l;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.item {
+    font-size: 14pt;
+    border-radius: 40px;
+    background-color: #50bbce;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 0.4em 0.4em 10px rgba(19, 17, 17, 0.5);
+
+}
+
+.item.active {
+    font-size: 14pt;
+    background-color: #C4EDDE;
+}
+
+.active{
+    font-size: 20pt;
+    background-color: #C4EDDE;
+    color: #F73859;
+}
