@@ -131,6 +131,16 @@ export const setContactsThunk = (data, userID) => {
         }
     }
 }
+export const setPhotoProfile = (userID) => {
+    return async (dispatch) => {
+        dispatch(IsFeatchingF(true));
+        let response = await profileAPI.setPhotoProfile()
+        if (response.data.resultCode === 0) {
+            dispatch(InfoProfileThunk(userID))
+            dispatch(IsFeatchingF(false));
+        }
+    }
+}
 
 
 export default ProfileReducer;

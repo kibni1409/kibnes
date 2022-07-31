@@ -2,7 +2,7 @@ import {connect} from "react-redux";
 import {
     getStatusProfileThunk,
     InfoProfileThunk,
-    setContactsThunk,
+    setContactsThunk, setPhotoProfile,
     setStatusProfileThunk
 } from "../../../Redux/ProfileReducer";
 import ProfileAPI from "./ProfileAPI";
@@ -33,6 +33,9 @@ let mapDispatchToProps = (dispatch) =>{
         },
         setContactsThunk: (data, userID) => {
             dispatch(setContactsThunk(data, userID))
+        },
+        savePhoto: (userID) => {
+            dispatch(setPhotoProfile(userID));
         }
 
     }

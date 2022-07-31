@@ -2,10 +2,11 @@ import classes from './Profile.module.css';
 import React from 'react';
 import AreaPostContainer from "./Posts/AreaPost/AreaPostContainer";
 import PostContainer from "./Posts/PostContainer";
-import ava from "../../../IMG/1_1WCjO1iYMo7J7Upp8KMfLA@2x.jpeg"
+
 import ProfileStatus from "./ProfileStatus";
 import {useParams} from "react-router-dom";
 import Contacts from "./Contacts";
+import PhotoProfile from "./PhotoProfile";
 
 
 const Profile = (props) => {
@@ -14,7 +15,7 @@ const Profile = (props) => {
 
     return (
         <div className={classes.profile}>
-            <img src={props.profile.photos.large === null ? ava : props.profile.photos.large} alt="ava"/> {/*TODO chose photo on auth user*/}
+            <PhotoProfile profile={props.profile} savePhoto={props.savePhoto} userID={userID} />
             <div className={classes.info}>
                 ID: {props.profile.userId} FullName: {props.profile.fullName}
             </div>

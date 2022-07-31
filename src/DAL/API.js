@@ -1,4 +1,5 @@
 import * as axios from "axios";
+import {setPhotoProfile} from "../Redux/ProfileReducer";
 
 const instance = axios.create({
     withCredentials: true,
@@ -64,6 +65,17 @@ export const profileAPI = {
     setStatusProfile(status){
         return instance.put(`profile/status`,{
             status: status
+        })
+    },
+    setPhotoProfile(){
+        let formdata = new FormData();
+        let imagefile = document.querySelector('#photo')
+        formdata.append("image", imagefile.files[0])
+
+        return instance.put(`profile/photo`,formdata,{
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
         })
     },
     setContacts(data){
