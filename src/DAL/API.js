@@ -42,7 +42,6 @@ export const profileAPI = {
         return instance.get(`auth/me`).then(
             resronse => resronse.data
         )
-
     },
     Login (email, password, rememberMe) {
         return instance.post(`auth/login`, {email, password, rememberMe}).then(
@@ -65,6 +64,16 @@ export const profileAPI = {
     setStatusProfile(status){
         return instance.put(`profile/status`,{
             status: status
+        })
+    },
+    setContacts(data){
+        return instance.put(`profile`,{
+            aboutMe: "I look forward to becoming a React developer",
+            contacts: data,
+            lookingForAJob: data.lookingForAJob,
+            lookingForAJobDescription: data.lookingForAJobDescription,
+            fullName: "Andrey Petrov"
+
         })
     }
 }

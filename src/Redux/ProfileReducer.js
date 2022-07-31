@@ -11,7 +11,27 @@ let initialState = {
         {id: 1, text: 'Hello milk'},
         {id: 2, text: 'Hello friends'}
     ],
-    profile: null,
+    profile: {
+        aboutMe: null,
+        contacts: {
+            facebook: null,
+            github: null,
+            instagram: null,
+            mainlink: null,
+            twitter: null,
+            vk: null,
+            website: null,
+            youtube: null
+        },
+        fullName: null,
+        lookingForAJob: null,
+        lookingForAJobDescription: null,
+        photos: {
+            small: null,
+            large: null
+        },
+        userId: null
+        },
     status: "",
     isFetching: false,
 }
@@ -26,6 +46,7 @@ const ProfileReducer = (state = initialState, action) => {
             }
         }
         case SET_PROFILE: {
+
             return {
                 ...state,
                 profile: action.profile
@@ -55,6 +76,7 @@ export const AddPostAction = (text) => {
     }
 }
 export const ProfileAction = (profile) => {
+
     return {
         type: "profile/SET_PROFILE",
         profile
@@ -79,7 +101,6 @@ export const InfoProfileThunk = (userID) => {
         let response = await profileAPI.InfoProfile(userID)
         dispatch(ProfileAction(response));
         dispatch(IsFeatchingF(false));
-
     }
 }
 export const getStatusProfileThunk = (userID) => {
@@ -96,6 +117,16 @@ export const setStatusProfileThunk = (status) => {
         let response = await profileAPI.setStatusProfile(status)
         if (response.data.resultCode === 0) {
             dispatch(StatusAction(status));
+            dispatch(IsFeatchingF(false));
+        }
+    }
+}
+export const setContactsThunk = (data, userID) => {
+    return async (dispatch) => {
+        dispatch(IsFeatchingF(true));
+        let response = await profileAPI.setContacts(data)
+        if (response.data.resultCode === 0) {
+            dispatch(InfoProfileThunk(userID))
             dispatch(IsFeatchingF(false));
         }
     }

@@ -29,7 +29,7 @@ let mapStateToProps = (state) => {
        sizePage: getSizePageUsers(state),
        isFetching: getIsFetching(state),
        totalPages: getTotalPages(state),
-       countDoteStart: state.UsersPage.countDoteStart, //TODO local state
+       countDoteStart: state.UsersPage.countDoteStart, // TODO local state
        countDoteEnd: state.UsersPage.countDoteEnd, // and this
        isAuth: getIsAuth(state),
    }

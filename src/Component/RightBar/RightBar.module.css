@@ -3,7 +3,8 @@
     padding: 10px;
     margin: 0 auto;
     width: 80%;
-   display: block;
+    min-height: 100vh;
+    display: block;
     grid-area: r;
 }
 

@@ -1,5 +1,10 @@
 import {connect} from "react-redux";
-import {getStatusProfileThunk, InfoProfileThunk, setStatusProfileThunk} from "../../../Redux/ProfileReducer";
+import {
+    getStatusProfileThunk,
+    InfoProfileThunk,
+    setContactsThunk,
+    setStatusProfileThunk
+} from "../../../Redux/ProfileReducer";
 import ProfileAPI from "./ProfileAPI";
 import {compose} from "redux";
 import withAuthRedirect from "../../../HOC/withAuthRedirect";
@@ -25,6 +30,9 @@ let mapDispatchToProps = (dispatch) =>{
         },
         setStatusProfileThunk: (status) => {
             dispatch(setStatusProfileThunk(status))
+        },
+        setContactsThunk: (data, userID) => {
+            dispatch(setContactsThunk(data, userID))
         }
 
     }
