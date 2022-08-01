@@ -40,3 +40,6 @@ export const getSizePageUsers = (state) => {
 export const getTotalPages = (state) => {
     return state.UsersPage.totalPages
 }
+export const getCaptcha = (state) => {
+    return state.Auth.CaptchaURL
+}

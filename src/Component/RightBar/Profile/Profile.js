@@ -16,14 +16,8 @@ const Profile = (props) => {
     return (
         <div className={classes.profile}>
             <PhotoProfile profile={props.profile} savePhoto={props.savePhoto} userID={userID} />
-            <div className={classes.info}>
-                ID: {props.profile.userId} FullName: {props.profile.fullName}
-            </div>
             <ProfileStatus status={props.status} setStatus={props.setStatusProfileThunk} userID={userID}/>
-            <div>
-                About me: {props.profile.aboutMe}
-                <Contacts profile={props.profile} userID={userID} setContactsThunk={props.setContactsThunk} InfoProfileThunk={props.InfoProfileThunk}/>
-            </div>
+            <Contacts profile={props.profile} userID={userID} setContactsThunk={props.setContactsThunk} InfoProfileThunk={props.InfoProfileThunk}/>
             <PostContainer/>
             {userID === "my" ? <AreaPostContainer/> : null}
         </div>

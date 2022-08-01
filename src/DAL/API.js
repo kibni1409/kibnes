@@ -1,5 +1,4 @@
 import * as axios from "axios";
-import {setPhotoProfile} from "../Redux/ProfileReducer";
 
 const instance = axios.create({
     withCredentials: true,
@@ -44,8 +43,8 @@ export const profileAPI = {
             resronse => resronse.data
         )
     },
-    Login (email, password, rememberMe) {
-        return instance.post(`auth/login`, {email, password, rememberMe}).then(
+    Login (email, password, rememberMe, captcha= null) {
+        return instance.post(`auth/login`, {email, password, rememberMe, captcha}).then(
             resronse => resronse.data
         )
     },
@@ -67,6 +66,10 @@ export const profileAPI = {
             status: status
         })
     },
+    getCaptchaURL(){
+        return instance.put(`/security/get-captcha-url`,{
+        })
+    },
     setPhotoProfile(){
         let formdata = new FormData();
         let imagefile = document.querySelector('#photo')
@@ -80,11 +83,11 @@ export const profileAPI = {
     },
     setContacts(data){
         return instance.put(`profile`,{
-            aboutMe: "I look forward to becoming a React developer",
+            aboutMe: data.aboutMe,
             contacts: data,
             lookingForAJob: data.lookingForAJob,
             lookingForAJobDescription: data.lookingForAJobDescription,
-            fullName: "Andrey Petrov"
+            fullName: data.fullName
 
         })
     }

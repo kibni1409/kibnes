@@ -10,6 +10,8 @@ import classes from "./Profile.module.css";
 import React, {useEffect, useState} from "react";
 import {useForm} from "react-hook-form";
 
+//TODO refactoring
+
 const Contacts = (props) => {
 
     let [githubC,editGitHub] = useState(props.profile.contacts.github)
@@ -20,6 +22,8 @@ const Contacts = (props) => {
     let [websiteC,editWebsite] = useState(props.profile.contacts.website)
     let [youtubeC,editYoutube] = useState(props.profile.contacts.youtube)
     let [mainLinkC,editMainLink] = useState(props.profile.contacts.mainLink)
+    let [fullNameC,editFullName] = useState(props.profile.fullName)
+    let [aboutMeC,editAboutMe] = useState(props.profile.aboutMe)
     let [descriptionC,editDescription] = useState(props.profile.lookingForAJobDescription)
     let [editMode, setEditMode] = useState(false);
 
@@ -125,14 +129,27 @@ const Contacts = (props) => {
     const onDescription = (e) => {
         editDescription(e.currentTarget.value)
     }
+    const onName = (e) => {
+        editFullName(e.currentTarget.value)
+    }
+    const onAboutMe = (e) => {
+        editAboutMe(e.currentTarget.value)
+    }
 
     return (
         <div>
             {props.userID === "my"
                 ? editMode
                     ? <form onSubmit={handleSubmit(onSubmit)}>
+                        <label htmlFor="fullName">FullName:</label>
+                        <input {...register("fullName")} onChange={onName} placeholder={props.profile.fullName || "FullName"} value={fullNameC} ></input><br/>
+
+                        <label htmlFor="aboutMe">About me:</label>
+                        <textarea {...register("aboutMe")} onChange={onAboutMe} placeholder={props.profile.aboutMe || "About Me"} value={aboutMeC} ></textarea><br/>
+
                         <label htmlFor="Looking">Looking for a job:</label>
                         <input {...register("lookingForAJob")} type="checkbox"/><br/>
+
                         <label htmlFor="Description">Looking for a job description:</label>
                         <input {...register("lookingForAJobDescription")} placeholder={props.profile.lookingForAJobDescription} onChange={onDescription} value={descriptionC} ></input><br/>
 
@@ -147,14 +164,23 @@ const Contacts = (props) => {
                         <button type={"submit"}>Save</button><br/>
                       </form>
                     : <div>
-                        <button onClick={Activate} type={"button"}>Edit</button>
+                        <div className={classes.info}>
+                            ID: {props.profile.userId} FullName: {props.profile.fullName}
+                        </div>
+                        About me: {props.profile.aboutMe}
                         <p><span>Looking for a job: {props.profile.lookingForAJob ? "True" : "False"}</span></p>
                         <p><span>Looking for a job description: {props.profile.lookingForAJobDescription}</span></p>
                         <ContactsLink profile={props.profile} />
+                        <button onClick={Activate} type={"button"}>Edit</button>
                       </div>
                 : <div>
+
+                    <div className={classes.info}>
+                        ID: {props.profile.userId} FullName: {props.profile.fullName}
+                    </div>
                     <p><span>Looking for a job: {props.profile.lookingForAJob ? "True" : "False"}</span></p>
                     <p><span>Looking for a job description: {props.profile.lookingForAJobDescription}</span></p>
+                    About me: {props.profile.aboutMe}
                     <ContactsLink profile={props.profile}/>
                 </div>
 

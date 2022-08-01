@@ -23,7 +23,7 @@ const LoginForm = (props) => {
     } = useForm();
 
     const onSubmit = (data) => {
-        props.login(data.email, data.password, data.rememberMe)
+        props.login(data.email, data.password, data.rememberMe, data.captcha)
         reset();
     };
     return (
@@ -48,6 +48,15 @@ const LoginForm = (props) => {
                 </div>
                 <div>
                     <input type={"checkbox"} {...register("rememberMe")} />Remember me
+                </div>
+                <div>
+                    {props.captchaURL
+                        ? <div>
+                            <img src={props.captchaURL} alt="captcha"/><br/>
+                            <input placeholder="captcha" {...register("captcha")}/>
+                        </div>
+                        : null
+                    }
                 </div>
                 <div>
                     <button type={"submit"}>Submit</button>

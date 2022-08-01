@@ -1,15 +1,16 @@
 import {profileAPI} from "../DAL/API";
-import {Navigate} from "react-router-dom";
 
 const SET_USER_DATA = "auth/SET_USER_DATA";
 const SET_ERROR = "auth/SET_ERROR";
+const SET_URL = "auth/SET_URL";
 
 let initialState = {
     login: null,
     userID: null,
     email: null,
     isAuth: false,
-    Error: null
+    Error: null,
+    CaptchaURL: null
 }
 
 let AutchReducer = (state = initialState, action) => {
@@ -29,6 +30,12 @@ let AutchReducer = (state = initialState, action) => {
                 Error: action.message,
             }
         }
+        case SET_URL: {
+            return {
+                ...state,
+                CaptchaURL: action.payload,
+            }
+        }
         default:
             return state;
     }
@@ -46,6 +53,12 @@ export const ErrorAC = (message) => {
         message: message
     }
 }
+export const SetCaptchaURLAC = (url) => {
+    return {
+        type: "auth/SET_URL",
+        payload: url
+    }
+}
 
 export const AuthMeThunk = () => {
     return async dispatch => {
@@ -55,14 +68,20 @@ export const AuthMeThunk = () => {
         }
     }
 }
-export const LoginThunk = (email, password, rememberMe) => {
+export const LoginThunk = (email, password, rememberMe, captcha) => {
     return async dispatch => {
-        let response = await profileAPI.Login(email, password, rememberMe)
+        let response = await profileAPI.Login(email, password, rememberMe, captcha)
         if (response.resultCode === 0) {
             dispatch(SetUserDataAC(response.data.id, response.data.login, response.data.email, true));
 
-        } else {
-            dispatch(ErrorAC(response.messages))
+        }
+        if(response.resultCode === 10){
+            debugger;
+            dispatch(getCaptchaURLThunk());
+            dispatch(ErrorAC(response.messages));
+        }
+        else {
+            dispatch(ErrorAC(response.messages));
         }
     }
 }
@@ -71,6 +90,16 @@ export const LogoutThunk = () => {
         let response = await profileAPI.Logout()
         if (response.resultCode === 0) {
             dispatch(SetUserDataAC(null, null, null, false));
+        }
+    }
+}
+export const getCaptchaURLThunk = () => {
+    return async dispatch => {
+        let response = await profileAPI.getCaptchaURL()
+        debugger
+        if (response.status === 200) {
+            debugger;
+            dispatch(SetCaptchaURLAC(response.data.url));
         }
     }
 }
