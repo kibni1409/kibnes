@@ -2,7 +2,7 @@ import React from "react";
 import LoginForm from "./LoginForm";
 import {compose} from "redux";
 import {connect} from "react-redux";
-import {getCaptchaURLThunk, LoginThunk} from "../../../Redux/AuthReducer";
+import {getCaptchaURLThunk, LoginThunk} from "../../../Redux/AuthReducer.ts";
 import {getCaptcha, getError, getIsAuth} from "../../../Redux/Selectors";
 
 let mapStateToProps = (state) =>{

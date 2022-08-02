@@ -12,7 +12,7 @@ import {useForm} from "react-hook-form";
 
 //TODO refactoring
 
-const Contacts = (props) => {
+const Contacts = (props) => { //TODO refactoring
 
     let [githubC,editGitHub] = useState(props.profile.contacts.github)
     let [vkC,editVk] = useState(props.profile.contacts.vk)
@@ -180,7 +180,7 @@ const Contacts = (props) => {
                     </div>
                     <p><span>Looking for a job: {props.profile.lookingForAJob ? "True" : "False"}</span></p>
                     <p><span>Looking for a job description: {props.profile.lookingForAJobDescription}</span></p>
-                    About me: {props.profile.aboutMe}
+                    About me: {props.profile.aboutMe}<br/>
                     <ContactsLink profile={props.profile}/>
                 </div>
 

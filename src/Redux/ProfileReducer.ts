@@ -5,38 +5,46 @@ const SET_PROFILE = "profile/SET_PROFILE";
 const SET_STATUS = "profile/SET_STATUS";
 const IS_FEATCHING_PROFILE = "profile/IS_FEATCHING_PROFILE";
 
+export type PostsType = {
+    id: number
+    text: string
+}
+export type ProfileType = {
+    aboutMe:  null | string
+    contacts: {
+        facebook: null | string ,
+        github: null | string,
+        instagram: null | string,
+        mainlink: null | string,
+        twitter: null | string,
+        vk: null | string,
+        website: null | string,
+        youtube: null | string
+    },
+    fullName: null | string,
+    lookingForAJob: null | string,
+    lookingForAJobDescription: null | string,
+    photos: {
+        small: null | string,
+        large: null | string
+    },
+    userId: null | number
+}
+
 let initialState = {
     posts: [
         {id: 0, text: 'Hello world!'},
         {id: 1, text: 'Hello milk'},
         {id: 2, text: 'Hello friends'}
-    ],
-    profile: {
-        aboutMe: null,
-        contacts: {
-            facebook: null,
-            github: null,
-            instagram: null,
-            mainlink: null,
-            twitter: null,
-            vk: null,
-            website: null,
-            youtube: null
-        },
-        fullName: null,
-        lookingForAJob: null,
-        lookingForAJobDescription: null,
-        photos: {
-            small: null,
-            large: null
-        },
-        userId: null
-        },
-    status: "",
-    isFetching: false,
+    ] as Array<PostsType>,
+    profile: null as ProfileType | null,
+    status: null as null | string,
+    isFetching: false as true | false,
 }
 
-const ProfileReducer = (state = initialState, action) => {
+export type ProfileReducerType = typeof initialState;
+
+const ProfileReducer = (state = initialState, action: any) : ProfileReducerType => {
     switch (action.type) {
         case ADD_POST: {
             let sizePosts = state.posts.length;
@@ -69,50 +77,68 @@ const ProfileReducer = (state = initialState, action) => {
     }
 }
 
-export const AddPostAction = (text) => {
+export type AddPostActionType = {
+    type: typeof ADD_POST
+    text: string
+}
+export const AddPostAction = (text: string) : AddPostActionType => {
     return {
         type: "profile/ADD_POST",
         text: text
     }
 }
-export const ProfileAction = (profile) => {
 
+export type ProfileActionType = {
+    type: typeof SET_PROFILE
+    profile: any
+}
+export const ProfileAction = (profile: any) : ProfileActionType => {
     return {
         type: "profile/SET_PROFILE",
         profile
     }
 }
-export const StatusAction = (status) => {
+
+export type StatusActionType = {
+    type: typeof SET_STATUS
+    status: string
+}
+export const StatusAction = (status: string) : StatusActionType => {
     return {
         type: "profile/SET_STATUS",
         status: status
     }
 }
-export const IsFeatchingF = (bool) => {
+
+export type IsFeatchingFType = {
+    type: typeof IS_FEATCHING_PROFILE
+    isFetching: boolean
+}
+export const IsFeatchingF = (bool: boolean) : IsFeatchingFType => {
     return {
         type: "profile/IS_FEATCHING_PROFILE",
         isFetching: bool
     }
 }
 
-export const InfoProfileThunk = (userID) => {
-    return async (dispatch) => {
+export const InfoProfileThunk = (userID: number) => {
+    return async (dispatch: any) => {
         dispatch(IsFeatchingF(true));
         let response = await profileAPI.InfoProfile(userID)
         dispatch(ProfileAction(response));
         dispatch(IsFeatchingF(false));
     }
 }
-export const getStatusProfileThunk = (userID) => {
-    return async (dispatch) => {
+export const getStatusProfileThunk = (userID: number) => {
+    return async (dispatch: any) => {
         dispatch(IsFeatchingF(true));
         let response = await profileAPI.getStatusProfile(userID)
         dispatch(StatusAction(response.data));
         dispatch(IsFeatchingF(false));
     }
 }
-export const setStatusProfileThunk = (status) => {
-    return async (dispatch) => {
+export const setStatusProfileThunk = (status: string) => {
+    return async (dispatch: any) => {
         dispatch(IsFeatchingF(true));
         let response = await profileAPI.setStatusProfile(status)
         if (response.data.resultCode === 0) {
@@ -121,8 +147,8 @@ export const setStatusProfileThunk = (status) => {
         }
     }
 }
-export const setContactsThunk = (data, userID) => {
-    return async (dispatch) => {
+export const setContactsThunk = (data: any, userID: number) => {
+    return async (dispatch: any) => {
         dispatch(IsFeatchingF(true));
         let response = await profileAPI.setContacts(data)
         if (response.data.resultCode === 0) {
@@ -131,8 +157,8 @@ export const setContactsThunk = (data, userID) => {
         }
     }
 }
-export const setPhotoProfile = (userID) => {
-    return async (dispatch) => {
+export const setPhotoProfile = (userID: number) => {
+    return async (dispatch: any) => {
         dispatch(IsFeatchingF(true));
         let response = await profileAPI.setPhotoProfile()
         if (response.data.resultCode === 0) {

@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 import AreaMessage from "./AreaMessage";
-import {AddMessageAction} from "../../../../../Redux/MessageReducer";
+import {AddMessageAction} from "../../../../../Redux/MessageReducer.ts";
 
 let mapDispatchToProps = (dispatch) => {
     return {

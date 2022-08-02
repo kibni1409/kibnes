@@ -1,4 +1,5 @@
 import {usersAPI} from "../DAL/API";
+import * as buffer from "buffer";
 
 let FOLLOW = "users/FOLLOW";
 let SET_USERS = "users/SET_USERS";
@@ -9,18 +10,31 @@ let TOTAL_PAGES = "users/TOTAL_PAGES";
 let COUNT_DOTE_START = "users/COUNT_DOTE_START";
 let COUNT_DOTE_END = "users/COUNT_DOTE_END";
 
-let initialState = {
-    users: [],
-    totalCount: 0,
-    pageCount: 1,
-    sizePage: 10,
-    isFetching: false,
-    totalPages: 0,
-    countDoteStart: false,
-    countDoteEnd: false
+export type UsersType = {
+    name: string
+    id: number
+    photos: {
+        small: string | null
+        large: string | null
+    },
+    status: string
+    followed: boolean
 }
 
-let UsersReducer = (state = initialState, action) => {
+let initialState = {
+    users: [] as Array<UsersType>,
+    totalCount: 0 as number,
+    pageCount: 1 as number,
+    sizePage: 10 as number,
+    isFetching: false as false | true,
+    totalPages: 0 as number,
+    countDoteStart: false as false | true,
+    countDoteEnd: false as false | true
+}
+
+export type InitialStateType = typeof initialState;
+
+let UsersReducer = (state = initialState, action: any) : InitialStateType => {
     switch (action.type) {
         case FOLLOW: {
             return {
@@ -84,64 +98,104 @@ let UsersReducer = (state = initialState, action) => {
     }
 }
 
-export const FollowUsers = (id) => {
+export type FollowUsersType = {
+    type: typeof FOLLOW,
+    userID: number,
+    action: boolean
+}
+export const FollowUsers = (id: number) : FollowUsersType => {
     return {
         type: "users/FOLLOW",
         userID: id,
         action: true
     }
 }
-export const UnFollowUsers = (id) => {
+export const UnFollowUsers = (id: number) : FollowUsersType => {
     return {
         type: "users/FOLLOW",
         userID: id,
         action: false
     }
 }
-export const setPageCount = (count) => {
+
+export type setPageCountType = {
+    type: typeof SET_PAGE_COUNT,
+    pageCount: number
+}
+export const setPageCount = (count: number) : setPageCountType => {
     return {
         type: "users/SET_PAGE_COUNT",
         pageCount: count
     }
 }
-export const setUsers = (users) => {
+
+export type setUsersType = {
+    type: typeof SET_USERS,
+    users: any
+}
+export const setUsers = (users: any) : setUsersType => {
     return {
         type: "users/SET_USERS",
         users: users
     }
 }
-export const setTotalCount = (count) => {
+
+export type setTotalCountType = {
+    type: typeof SET_TOTAL_COUNT,
+    totalCount: number
+}
+export const setTotalCount = (count: number) : setTotalCountType => {
     return {
         type: "users/SET_TOTAL_COUNT",
         totalCount: count
     }
 }
-export const IsFeatchingF = (bool) => {
+
+export type IsFeatchingFType = {
+    type: typeof IS_FEATCHING,
+    isFetching: boolean
+}
+export const IsFeatchingF = (bool: boolean) : IsFeatchingFType => {
     return {
         type: "users/IS_FEATCHING",
         isFetching: bool
     }
 }
-export const setTotalPages = (count) => {
+
+export type setTotalPagesType = {
+    type: typeof TOTAL_PAGES,
+    totalPages: number
+}
+export const setTotalPages = (count: number) : setTotalPagesType => {
     return {
         type: "users/TOTAL_PAGES",
         totalPages: count
     }
 }
-export const setCountDoteStart = (dote) => {
+
+export type setCountDoteStartType = {
+    type: typeof COUNT_DOTE_START,
+    dote: boolean
+}
+export const setCountDoteStart = (dote: boolean) : setCountDoteStartType => {
     return {
         type: "users/COUNT_DOTE_START",
         dote: dote
     }
 }
-export const setCountDoteEnd = (dote) => {
+
+export type setCountDoteEndType = {
+    type: typeof COUNT_DOTE_END,
+    dote: boolean
+}
+export const setCountDoteEnd = (dote: boolean) : setCountDoteEndType => {
     return {
         type: "users/COUNT_DOTE_END",
         dote: dote
     }
 }
 
-export const setUsersThunk = (pageCount, sizePage) => {
+export const setUsersThunk = (pageCount: number, sizePage: number) => {
     return async dispatch => {
         dispatch(IsFeatchingF(true));
         let response = await usersAPI.GetUsers(pageCount, sizePage)
@@ -152,7 +206,7 @@ export const setUsersThunk = (pageCount, sizePage) => {
     }
 }
 
-export const FollowUserThunk = (userID) => {
+export const FollowUserThunk = (userID: number) => {
     return async dispatch => {
         dispatch(IsFeatchingF(true));
 
@@ -164,7 +218,7 @@ export const FollowUserThunk = (userID) => {
     }
 }
 
-export const unFollowUserThunk = (userID) => {
+export const unFollowUserThunk = (userID: number) => {
     return async dispatch => {
         dispatch(IsFeatchingF(true));
 
@@ -176,7 +230,7 @@ export const unFollowUserThunk = (userID) => {
     }
 }
 
-export const setFriendsThunk = (pageCount, sizePage) => {
+export const setFriendsThunk = (pageCount: number, sizePage: number) => {
     return async dispatch => {
         dispatch(IsFeatchingF(true));
         let response = await usersAPI.GetFriends(pageCount, sizePage)

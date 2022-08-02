@@ -1,10 +1,13 @@
 import classes from './RightBar.module.css';
-import {Route, Routes} from "react-router-dom";
+import {Navigate, Route, Routes} from "react-router-dom";
 import React from 'react';
-import UsersContainer from "./Users/UsersContainer";
 import ProfileContainer from "./Profile/ProfileContainer";
-import MessagesContainer from "./Messages/MessagesContainer";
 import Login from "./Login/LoginContainer";
+import MessagesContainer from "./Messages/MessagesContainer";
+import UsersContainer from "./Users/UsersContainer";
+
+// const UsersContainer = React.lazy(() => import("./Users/UsersContainer"));
+// const MessagesContainer = React.lazy(() => import("./Messages/MessagesContainer"));
 
 
 const RightBar = () => {
@@ -12,7 +15,6 @@ const RightBar = () => {
     return (
         <div className={classes.rightbar_wrapper}>
             <Routes>
-                <Route path="" element={<ProfileContainer/>}/>
                 <Route path="profile/" element={<ProfileContainer />}>
                     <Route path=":userID" element={<ProfileContainer />}/>
                 </Route>
@@ -23,7 +25,7 @@ const RightBar = () => {
                     <Route path=":UsersType" element={<UsersContainer />}/>
                 </Route>
                 <Route path="login" element={<Login/>}/>
-                <Route path="*" element={<h1>404</h1>}/>
+                <Route path="*" element={<Navigate to="profile/my"/>}/>
             </Routes>
         </div>
     );

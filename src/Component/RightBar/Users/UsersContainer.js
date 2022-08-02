@@ -8,7 +8,7 @@ import {
     unFollowUserThunk,
     FollowUserThunk,
     setFriendsThunk
-} from "../../../Redux/UsersReducer";
+} from "../../../Redux/UsersReducer.ts";
 import UsersAPI from "./UsersAPI";
 import {compose} from "redux";
 import {

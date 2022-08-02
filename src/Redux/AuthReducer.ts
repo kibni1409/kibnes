@@ -4,24 +4,27 @@ const SET_USER_DATA = "auth/SET_USER_DATA";
 const SET_ERROR = "auth/SET_ERROR";
 const SET_URL = "auth/SET_URL";
 
+
 let initialState = {
-    login: null,
-    userID: null,
-    email: null,
-    isAuth: false,
-    Error: null,
-    CaptchaURL: null
+    login: null as null | string,
+    userID: null as null | number,
+    email: null as null | string,
+    isAuth: false as true | false,
+    Error: null as null | string,
+    CaptchaURL: null as null | string
 }
 
-let AutchReducer = (state = initialState, action) => {
+export type InitialStateType = typeof initialState;
+
+let AutchReducer = (state = initialState, action: any) : InitialStateType => {
     switch (action.type) {
         case SET_USER_DATA: {
             return {
                 ...state,
-                login: action.action.login,
-                userID: action.action.userID,
-                email: action.action.email,
-                isAuth: action.action.isAuth
+                login: action.data.login,
+                userID: action.data.userID,
+                email: action.data.email,
+                isAuth: action.data.isAuth
             }
         }
         case SET_ERROR: {
@@ -40,47 +43,68 @@ let AutchReducer = (state = initialState, action) => {
             return state;
     }
 }
-
-export const SetUserDataAC = (userID, login, email, isAuth) => {
-    return {
-        type: "auth/SET_USER_DATA",
-        action: {userID, login, email, isAuth}
+type SetUserDataACType = {
+    type: typeof SET_USER_DATA,
+    data: {
+        userID: number,
+        login: string,
+        email: string,
+        isAuth: boolean
     }
 }
-export const ErrorAC = (message) => {
+export const SetUserDataAC = (userID: number, login: string, email: string, isAuth: boolean) : SetUserDataACType => {
+    return {
+        type: "auth/SET_USER_DATA",
+        data: {userID, login, email, isAuth}
+    }
+}
+
+type ErrorACType = {
+    type: typeof SET_ERROR,
+    message: string
+}
+export const ErrorAC = (message: string) : ErrorACType => {
     return {
         type: "auth/SET_ERROR",
         message: message
     }
 }
-export const SetCaptchaURLAC = (url) => {
+
+type SetCaptchaURLACType = {
+    type: typeof SET_URL,
+    payload: string
+}
+export const SetCaptchaURLAC = (url: string) : SetCaptchaURLACType => {
     return {
         type: "auth/SET_URL",
         payload: url
     }
 }
 
-export const AuthMeThunk = () => {
+export const AuthMeThunk = () => { //TODO try and catch(error)
     return async dispatch => {
-        let response = await profileAPI.AuthMe()
-        if (response.resultCode === 0) {
-            dispatch(SetUserDataAC(response.data.id, response.data.login, response.data.email, true));
+        try {
+            let response = await profileAPI.AuthMe()
+            if (response.resultCode === 0) {
+                dispatch(SetUserDataAC(response.data.id, response.data.login, response.data.email, true));
+            }
+        } catch (error) {
+
         }
     }
 }
-export const LoginThunk = (email, password, rememberMe, captcha) => {
+export const LoginThunk = (email: string, password: string, rememberMe: boolean, captcha: string) => {
     return async dispatch => {
         let response = await profileAPI.Login(email, password, rememberMe, captcha)
         if (response.resultCode === 0) {
             dispatch(SetUserDataAC(response.data.id, response.data.login, response.data.email, true));
 
         }
-        if(response.resultCode === 10){
+        if (response.resultCode === 10) {
             debugger;
             dispatch(getCaptchaURLThunk());
             dispatch(ErrorAC(response.messages));
-        }
-        else {
+        } else {
             dispatch(ErrorAC(response.messages));
         }
     }

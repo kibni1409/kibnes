@@ -1,4 +1,4 @@
-import {AddPostAction} from "../../../../../Redux/ProfileReducer";
+import {AddPostAction} from "../../../../../Redux/ProfileReducer.ts";
 import AreaPost from "./AreaPost";
 import {connect} from "react-redux";
 

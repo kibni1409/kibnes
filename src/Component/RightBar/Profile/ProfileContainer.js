@@ -4,7 +4,7 @@ import {
     InfoProfileThunk,
     setContactsThunk, setPhotoProfile,
     setStatusProfileThunk
-} from "../../../Redux/ProfileReducer";
+} from "../../../Redux/ProfileReducer.ts";
 import ProfileAPI from "./ProfileAPI";
 import {compose} from "redux";
 import withAuthRedirect from "../../../HOC/withAuthRedirect";
