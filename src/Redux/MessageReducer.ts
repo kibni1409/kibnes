@@ -27,7 +27,9 @@ let initialState = {
 }
 export type InitialStateType = typeof initialState;
 
-let MessageReducer = (state = initialState, action: any) : InitialStateType => {
+type ActionType = AddMessageActionType
+
+let MessageReducer = (state = initialState, action: ActionType) : InitialStateType => {
     switch (action.type){
         case SEND_MESSAGE: {
             let size = state.messages.length;

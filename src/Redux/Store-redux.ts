@@ -1,4 +1,4 @@
-import {applyMiddleware, combineReducers, createStore} from "redux";
+import {Action, applyMiddleware, combineReducers, createStore} from "redux";
 import MessageReducer from "./MessageReducer.ts";
 import ProfileReducer from "./ProfileReducer.ts";
 import UsersReducer from "./UsersReducer.ts";
@@ -15,6 +15,8 @@ let reducers = combineReducers({
 
 const store = createStore(reducers,composeWithDevTools(applyMiddleware(thunk)));
 
+export type AppDispatch = typeof store.dispatch
+// @ts-ignore
 window.store = store;
 
 export default store;

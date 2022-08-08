@@ -13,7 +13,7 @@ import UsersAPI from "./UsersAPI";
 import {compose} from "redux";
 import {
     getIsAuth, getIsFetching,
-    getPageCountUsers,
+    getPageCountUsers, getProfile,
     getSizePageUsers,
     getTotalCountUsers, getTotalPages,
     getUsers
@@ -32,6 +32,7 @@ let mapStateToProps = (state) => {
        countDoteStart: state.UsersPage.countDoteStart, // TODO local state
        countDoteEnd: state.UsersPage.countDoteEnd, // and this
        isAuth: getIsAuth(state),
+       profile: getProfile(state)
    }
 }
 

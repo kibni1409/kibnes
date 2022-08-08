@@ -11,7 +11,10 @@ const Users = (props) => {
             {props.isFetching ? <Preloader/> : null}
             <Pagination {...props}/>
             {
-                props.users.map(user => props.isFetching ? null : <div className={classes.user} key={user.id}>
+                props.users.map(user => props.isFetching
+                    ? null
+                    : props.profile.userId !== user.id
+                    ?<div className={classes.user} key={user.id}>
                         <NavLink to={'/profile/' + user.id}>
                             <img alt="AVA" src={user.photos.small != null ? user.photos.small : userPhoto}
                                  className={classes.img}/>
@@ -32,6 +35,7 @@ const Users = (props) => {
                                 }}>Follow</button>}
                         </div>
                     </div>
+                        : null
                 )
             }
         </>

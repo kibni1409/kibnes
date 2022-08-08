@@ -1,5 +1,5 @@
 import {usersAPI} from "../DAL/API";
-import * as buffer from "buffer";
+import {AnyAction} from "redux";
 
 let FOLLOW = "users/FOLLOW";
 let SET_USERS = "users/SET_USERS";
@@ -10,7 +10,7 @@ let TOTAL_PAGES = "users/TOTAL_PAGES";
 let COUNT_DOTE_START = "users/COUNT_DOTE_START";
 let COUNT_DOTE_END = "users/COUNT_DOTE_END";
 
-export type UsersType = {
+export type UserType = {
     name: string
     id: number
     photos: {
@@ -22,7 +22,7 @@ export type UsersType = {
 }
 
 let initialState = {
-    users: [] as Array<UsersType>,
+    users: [] as Array<UserType>,
     totalCount: 0 as number,
     pageCount: 1 as number,
     sizePage: 10 as number,
@@ -34,7 +34,9 @@ let initialState = {
 
 export type InitialStateType = typeof initialState;
 
-let UsersReducer = (state = initialState, action: any) : InitialStateType => {
+type ActionType = FollowUsersType | SetPageCountType | SetUsersType | SetTotalCountType | IsFeatchingFType | SetTotalPagesType | SetCountDoteStartType | SetCountDoteEndType
+
+let UsersReducer = (state = initialState, action: AnyAction) : InitialStateType => {
     switch (action.type) {
         case FOLLOW: {
             return {
@@ -42,7 +44,7 @@ let UsersReducer = (state = initialState, action: any) : InitialStateType => {
                 ...state.users,
                 users: state.users.map(u => {
                     if (u.id === action.userID) {
-                        return {...u, follow: action.action};
+                        return {...u, followed: action.action};
                     }
                     return u;
                 })
@@ -118,33 +120,33 @@ export const UnFollowUsers = (id: number) : FollowUsersType => {
     }
 }
 
-export type setPageCountType = {
+export type SetPageCountType = {
     type: typeof SET_PAGE_COUNT,
     pageCount: number
 }
-export const setPageCount = (count: number) : setPageCountType => {
+export const setPageCount = (count: number) : SetPageCountType => {
     return {
         type: "users/SET_PAGE_COUNT",
         pageCount: count
     }
 }
 
-export type setUsersType = {
+export type SetUsersType = {
     type: typeof SET_USERS,
     users: any
 }
-export const setUsers = (users: any) : setUsersType => {
+export const setUsers = (users: any) : SetUsersType => {
     return {
         type: "users/SET_USERS",
         users: users
     }
 }
 
-export type setTotalCountType = {
+export type SetTotalCountType = {
     type: typeof SET_TOTAL_COUNT,
     totalCount: number
 }
-export const setTotalCount = (count: number) : setTotalCountType => {
+export const setTotalCount = (count: number) : SetTotalCountType => {
     return {
         type: "users/SET_TOTAL_COUNT",
         totalCount: count
@@ -162,33 +164,33 @@ export const IsFeatchingF = (bool: boolean) : IsFeatchingFType => {
     }
 }
 
-export type setTotalPagesType = {
+export type SetTotalPagesType = {
     type: typeof TOTAL_PAGES,
     totalPages: number
 }
-export const setTotalPages = (count: number) : setTotalPagesType => {
+export const setTotalPages = (count: number) : SetTotalPagesType => {
     return {
         type: "users/TOTAL_PAGES",
         totalPages: count
     }
 }
 
-export type setCountDoteStartType = {
+export type SetCountDoteStartType = {
     type: typeof COUNT_DOTE_START,
     dote: boolean
 }
-export const setCountDoteStart = (dote: boolean) : setCountDoteStartType => {
+export const setCountDoteStart = (dote: boolean) : SetCountDoteStartType => {
     return {
         type: "users/COUNT_DOTE_START",
         dote: dote
     }
 }
 
-export type setCountDoteEndType = {
+export type SetCountDoteEndType = {
     type: typeof COUNT_DOTE_END,
     dote: boolean
 }
-export const setCountDoteEnd = (dote: boolean) : setCountDoteEndType => {
+export const setCountDoteEnd = (dote: boolean) : SetCountDoteEndType => {
     return {
         type: "users/COUNT_DOTE_END",
         dote: dote

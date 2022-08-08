@@ -3,6 +3,7 @@ import {profileAPI} from "../DAL/API";
 const ADD_POST = "profile/ADD_POST";
 const SET_PROFILE = "profile/SET_PROFILE";
 const SET_STATUS = "profile/SET_STATUS";
+const DELETE_POST = "profile/DELETE_POST";
 const IS_FEATCHING_PROFILE = "profile/IS_FEATCHING_PROFILE";
 
 export type PostsType = {
@@ -44,13 +45,21 @@ let initialState = {
 
 export type ProfileReducerType = typeof initialState;
 
-const ProfileReducer = (state = initialState, action: any) : ProfileReducerType => {
+type ActionsType = AddPostActionType | ProfileActionType | StatusActionType | IsFeatchingFType | DeletePostType
+
+const ProfileReducer = (state = initialState, action: ActionsType) : ProfileReducerType => {
     switch (action.type) {
         case ADD_POST: {
             let sizePosts = state.posts.length;
             return {
                 ...state,
                 posts: [...state.posts, {id: sizePosts, text: action.text}],
+            }
+        }
+        case DELETE_POST: {
+            return {
+                ...state,
+                posts: state.posts.filter( p => p.id !== action.postId)
             }
         }
         case SET_PROFILE: {
@@ -118,6 +127,16 @@ export const IsFeatchingF = (bool: boolean) : IsFeatchingFType => {
     return {
         type: "profile/IS_FEATCHING_PROFILE",
         isFetching: bool
+    }
+}
+export type DeletePostType = {
+    type: typeof DELETE_POST
+    postId: number
+}
+export const DeletePost = (postId: number) : DeletePostType => {
+    return {
+        type: "profile/DELETE_POST",
+        postId: postId
     }
 }
 

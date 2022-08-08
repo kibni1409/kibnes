@@ -1,4 +1,7 @@
-import {profileAPI} from "../DAL/API";
+// @ts-ignore
+import {profileAPI} from "../DAL/API.js";
+import {AppDispatch} from "./Store-redux";
+import {Dispatch} from "react";
 
 const SET_USER_DATA = "auth/SET_USER_DATA";
 const SET_ERROR = "auth/SET_ERROR";
@@ -16,7 +19,9 @@ let initialState = {
 
 export type InitialStateType = typeof initialState;
 
-let AutchReducer = (state = initialState, action: any) : InitialStateType => {
+type ActionType = SetUserDataACType | ErrorACType | SetCaptchaURLACType
+
+let AuthReducer = (state = initialState, action: ActionType) : InitialStateType => {
     switch (action.type) {
         case SET_USER_DATA: {
             return {
@@ -43,16 +48,17 @@ let AutchReducer = (state = initialState, action: any) : InitialStateType => {
             return state;
     }
 }
+
 type SetUserDataACType = {
     type: typeof SET_USER_DATA,
     data: {
-        userID: number,
-        login: string,
-        email: string,
+        userID: number | null
+        login: string | null
+        email: string | null
         isAuth: boolean
     }
 }
-export const SetUserDataAC = (userID: number, login: string, email: string, isAuth: boolean) : SetUserDataACType => {
+export const SetUserDataAC = (userID: number | null, login: string | null, email: string | null, isAuth: boolean) : SetUserDataACType => {
     return {
         type: "auth/SET_USER_DATA",
         data: {userID, login, email, isAuth}
@@ -82,7 +88,7 @@ export const SetCaptchaURLAC = (url: string) : SetCaptchaURLACType => {
 }
 
 export const AuthMeThunk = () => { //TODO try and catch(error)
-    return async dispatch => {
+    return async (dispatch: AppDispatch) => {
         try {
             let response = await profileAPI.AuthMe()
             if (response.resultCode === 0) {
@@ -93,32 +99,8 @@ export const AuthMeThunk = () => { //TODO try and catch(error)
         }
     }
 }
-export const LoginThunk = (email: string, password: string, rememberMe: boolean, captcha: string) => {
-    return async dispatch => {
-        let response = await profileAPI.Login(email, password, rememberMe, captcha)
-        if (response.resultCode === 0) {
-            dispatch(SetUserDataAC(response.data.id, response.data.login, response.data.email, true));
-
-        }
-        if (response.resultCode === 10) {
-            debugger;
-            dispatch(getCaptchaURLThunk());
-            dispatch(ErrorAC(response.messages));
-        } else {
-            dispatch(ErrorAC(response.messages));
-        }
-    }
-}
-export const LogoutThunk = () => {
-    return async dispatch => {
-        let response = await profileAPI.Logout()
-        if (response.resultCode === 0) {
-            dispatch(SetUserDataAC(null, null, null, false));
-        }
-    }
-}
 export const getCaptchaURLThunk = () => {
-    return async dispatch => {
+    return async (dispatch: AppDispatch) => {
         let response = await profileAPI.getCaptchaURL()
         debugger
         if (response.status === 200) {
@@ -128,4 +110,29 @@ export const getCaptchaURLThunk = () => {
     }
 }
 
-export default AutchReducer;
+export const LoginThunk = (email: string, password: string, rememberMe: boolean, captcha: string) => {
+    return async (dispatch: AppDispatch) => {
+        let response = await profileAPI.Login(email, password, rememberMe, captcha)
+        if (response.resultCode === 0) {
+            dispatch(SetUserDataAC(response.data.id, response.data.login, response.data.email, true));
+
+        }
+        if (response.resultCode === 10) {
+            dispatch(getCaptchaURLThunk());
+            dispatch(ErrorAC(response.messages));
+        } else {
+            dispatch(ErrorAC(response.messages));
+        }
+    }
+}
+export const LogoutThunk = () => {
+    return async (dispatch: AppDispatch) => {
+        let response = await profileAPI.Logout()
+        if (response.resultCode === 0) {
+            dispatch(SetUserDataAC(null, null, null, false));
+        }
+    }
+}
+
+
+export default AuthReducer;
